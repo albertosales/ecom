@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        //colocar este primeiro para obedecer a hierarquia
+        <!--<h:outputScript     name="./js/jquery-2.1.4.min.js"/> -->
+        <h:outputScript     name="./js/bootstrap.js"/>
+        
+            
+        <title>Ecommerce Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                
+                                   
+                <header>
+                    <nav class="navbar navbar-default navbar-fixed-top">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                                    <span class="sr-only">Menu</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="#" class="navbar-brand">E-Commerce</a>
+                            </div>                        
+                            <div class="collapse navbar-collapse" id="navbar-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#"><span class="glyphicon glyphicon-home"></span> Inicio </a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Iniciar sessão </a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Criar Conta </a></li>
+                                </ul>
+                                <form action="" class="navbar-form navbar-right" role="search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Buscar"/>
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                        </span>
+                                    </div>   
+                                </form>
+                            </div> 
+                        </div>
+                    </nav> 
+                </header>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
