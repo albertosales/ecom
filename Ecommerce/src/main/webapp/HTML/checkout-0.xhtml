@@ -737,15 +737,11 @@
                 </div>
             </div>
             <!-- /.row -->
+            
 
             <h:form id="formm" >
-                <h:inputText id="asd" value="#{geraBoleto.teste}" >
-                    <f:passThroughAttribute name="placeholder" value="Enter Value" />
-                </h:inputText> 
-                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="LOGIN">
-                    <f:ajax execute="formm" render="leLabel"  />
-                </h:commandButton>
-                <h:outputLabel id="leLabel" value="#{geraBoleto.teste}" />
+                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Gerar Boleto" action="#{pagamentoPaypal.pagar()}"/>
+                <h:outputLabel id="leLabel" value="" />
             </h:form>
            
             <div class="row">

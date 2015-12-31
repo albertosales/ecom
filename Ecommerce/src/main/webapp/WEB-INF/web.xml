@@ -25,4 +25,14 @@
         <param-name>primefaces.theme</param-name>
         <param-value>bootstrap</param-value>
     </context-param>
+    <listener>
+      <listener-class>
+         org.springframework.web.context.ContextLoaderListener
+      </listener-class>
+   </listener>
+   <listener>
+      <listener-class>
+         org.springframework.web.context.request.RequestContextListener
+      </listener-class>
+   </listener>
 </web-app>
