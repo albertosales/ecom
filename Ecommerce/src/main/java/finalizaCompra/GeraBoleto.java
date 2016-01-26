@@ -33,10 +33,12 @@ import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 
+
 /**
  *
  * @author Frede
  */
+
 @ManagedBean
 @ViewScoped
 public class GeraBoleto {
