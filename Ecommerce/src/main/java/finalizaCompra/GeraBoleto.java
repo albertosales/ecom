@@ -104,7 +104,7 @@ public class GeraBoleto {
         }
     }
 
-    public void download(byte[] pdfAsBytes) {
+    private void download(byte[] pdfAsBytes) {
         try {
             HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 

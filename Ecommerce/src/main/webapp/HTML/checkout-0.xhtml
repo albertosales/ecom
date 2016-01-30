@@ -740,8 +740,15 @@
             
 
             <h:form id="formm" >
-                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Gerar Boleto" action="#{pagamentoPaypal.pagar()}"/>
-                <h:outputLabel id="leLabel" value="" />
+                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento paypal" action="#{pagamentoPaypal.pagar()}"/>
+                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Gerar Boleto" action="#{geraBoleto.gerarBoleto()}"/>
+                <h:outputLabel class="block-title-2" value="#{pagamentoPaypal.resultado}" />
+                <f:metadata>
+                    <f:viewParam name="paymentId" value="#{pagamentoPaypal.paymentId}"/>
+                    <f:viewParam name="PayerID" value="#{pagamentoPaypal.payerId}"/>
+                    <f:viewParam name="token" value="#{pagamentoPaypal.token}"/>
+                    <f:event type="preRenderView" listener="#{pagamentoPaypal.confirmarPagamento()}" />
+                </f:metadata>
             </h:form>
            
             <div class="row">

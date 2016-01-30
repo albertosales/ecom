@@ -6,9 +6,12 @@
 package finalizaCompra;
 
 import com.paypal.api.payments.Amount;
+import com.paypal.api.payments.Item;
+import com.paypal.api.payments.ItemList;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payer;
 import com.paypal.api.payments.Payment;
+import com.paypal.api.payments.PaymentExecution;
 import com.paypal.api.payments.RedirectUrls;
 import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
@@ -34,7 +37,13 @@ import javax.servlet.http.HttpServletRequest;
 @ManagedBean
 @SessionScoped
 public class PagamentoPaypal {
-     public void pagar() {
+
+    private String paymentId;
+    private String payerId;
+    private String token;
+    private String resultado;
+
+    public void pagar() {
         Map<String, String> sdkConfig = new HashMap<String, String>();
         sdkConfig.put("mode", "sandbox");
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -42,43 +51,109 @@ public class PagamentoPaypal {
         String accessToken = "";
         try {
             accessToken = new OAuthTokenCredential("AdLLg-1pTKFjOl-PZoUUoFSyhyVyX9l2y4fM55-9k9lvwH3tFv2usUzm5YyWavGXDL5iYE11M4_Mhbku", "ECCy1PqFARiICFlmxqsMjyyENJKYijXMtQ7gxIsI5OqOV_MmifFYI27DU_JUFqm9uNqfCQBaNmh_ZVWs", sdkConfig).getAccessToken();
-
             APIContext apiContext = new APIContext(accessToken);
             apiContext.setConfigurationMap(sdkConfig);
 
             Payer payer = new Payer();
             payer.setPaymentMethod("paypal");
 
+            Item item = new Item("Coisa", "1", "12", "USD");
+            Item item2 = new Item("Coisa2", "1", "12", "USD");
+
+            List<Item> items = new ArrayList<Item>();
+            items.add(item);
+            items.add(item2);
+
+            ItemList list = new ItemList();
+            list.setItems(items);
+
             Amount amount = new Amount();
             amount.setCurrency("USD");
-            amount.setTotal("12");
+            amount.setTotal("24");
 
             Transaction transaction = new Transaction();
-            transaction.setDescription("creating a payment with saved credit card");
+            transaction.setItemList(list);
             transaction.setAmount(amount);
 
             List<Transaction> transactions = new ArrayList<Transaction>();
             transactions.add(transaction);
-            
+
             Payment payment = new Payment();
             payment.setIntent("sale");
             payment.setPayer(payer);
             payment.setTransactions(transactions);
-            
+
             RedirectUrls redirectUrls = new RedirectUrls();
-            redirectUrls.setReturnUrl("http://localhost:8084/Ecommerce/HTML/index.html");
+            redirectUrls.setReturnUrl("http://localhost:8084/Ecommerce/HTML/checkout-0.xhtml");
             redirectUrls.setCancelUrl("http://localhost:8084/Ecommerce/HTML/checkout-0.xhtml");
             payment.setRedirectUrls(redirectUrls);
 
             Payment createdPayment = payment.create(apiContext);
             Links links = (Links) createdPayment.getLinks().toArray()[1];
-           
+
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
             externalContext.redirect(links.getHref());
-            System.out.println(externalContext.getRequestParameterNames().toString());
+
         } catch (PayPalRESTException | IOException ex) {
             Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
     }
+
+    public void confirmarPagamento() {
+        try {
+            Map<String, String> sdkConfig = new HashMap<String, String>();
+            sdkConfig.put("mode", "sandbox");
+            HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            String accessToken = new OAuthTokenCredential("AdLLg-1pTKFjOl-PZoUUoFSyhyVyX9l2y4fM55-9k9lvwH3tFv2usUzm5YyWavGXDL5iYE11M4_Mhbku", "ECCy1PqFARiICFlmxqsMjyyENJKYijXMtQ7gxIsI5OqOV_MmifFYI27DU_JUFqm9uNqfCQBaNmh_ZVWs", sdkConfig).getAccessToken();
+            APIContext apiContext = new APIContext(accessToken);
+            apiContext.setConfigurationMap(sdkConfig);
+
+
+            Payment payment = new Payment();
+            payment.setId(getPaymentId());
+            PaymentExecution paymentExecute = new PaymentExecution();
+            paymentExecute.setPayerId(getPayerId());
+            Payment result = payment.execute(apiContext, paymentExecute);
+            if (result.getState().equals("approved")) {
+                resultado = "Aprovado";
+            }
+            System.out.println(resultado);
+        } catch (PayPalRESTException ex) {
+            resultado = "Não aprovado";
+            Logger.getLogger(PagamentoPaypal.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        }
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public String getPayerId() {
+        return payerId;
+    }
+
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+    
 }
