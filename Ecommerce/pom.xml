@@ -55,6 +55,7 @@
             <groupId>org.jrimum</groupId>
             <artifactId>jrimum-bopepo</artifactId>
             <version>0.2.3-SNAPSHOT</version><!-- 0.2.3-DEV-SNAPSHOT em desenvolvimento -->
+            <type>jar</type>
         </dependency>
     </dependencies>
 
