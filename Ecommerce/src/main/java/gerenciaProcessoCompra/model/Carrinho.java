@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nucleoEcommerce.vo;
+package gerenciaProcessoCompra.model;
 
 import java.util.ArrayList;
+import nucleoEcommerce.vo.Produto;
 
 /**
  *
  * @author Leandro Klein
  */
-public class Carrinho {
+
+public class Carrinho implements nucleoEcommerce.interfaces.Carrinho{
+    
     private ArrayList<Produto> listaDeProdutos;
 
     public ArrayList<Produto> getListaDeProdutos() {
@@ -20,5 +23,10 @@ public class Carrinho {
 
     public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
         this.listaDeProdutos = listaDeProdutos;
+    }
+
+    @Override
+    public void adicionaAoCarrinho(Produto produto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

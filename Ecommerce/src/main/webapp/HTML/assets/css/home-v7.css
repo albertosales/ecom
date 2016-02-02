@@ -296,7 +296,8 @@ html {
   opacity: 1;
 }
 .slider-hero-caption {
-  max-width: 40% position: relative;
+  max-width: 40%;
+  position: relative;  
 }
 .slider-hero-caption.max-60 {
   max-width: 60%;
