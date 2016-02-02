@@ -1670,7 +1670,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 
 .banner .sliderInfo .container {
     height: 100%;
-    dispay: block;
+    display: block;
 }
 
 .sliderText {
@@ -2490,7 +2490,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     z-index: 2;
 }
 
-.style2 .section-title span, .section-title.style2 span, {
+.style2 .section-title span, .section-title.style2 span {
     color: #454545;
     display: table;
     position: relative;
@@ -5538,7 +5538,7 @@ div.quickview {
 
 .imageHoverFlip .primaryImage {
     transform-style: preserve-3d;
-    transform: rotateY(0);
+    transform: rotateY(0deg);
     transition: all .10s linear;
     -webkit-transition: all .10s linear;
 }
