@@ -66,7 +66,8 @@ h1.special {
 
 .sidebarx {
     position: fixed;
-    left: 0 top : 0;
+    left: 0 ;
+    top: 0;
     height: 100%;
     background: #ddd;
     min-width: 152px;
