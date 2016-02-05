@@ -13,7 +13,7 @@ import nucleoEcommerce.vo.Produto;
  * @author Leandro Klein
  */
 
-public class Carrinho implements nucleoEcommerce.interfaces.Carrinho{
+public class Carrinho implements nucleoEcommerce.interfaces.ICarrinho{
     
     private ArrayList<Produto> listaDeProdutos;
 

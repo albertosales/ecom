@@ -11,6 +11,6 @@ import nucleoEcommerce.vo.Produto;
  *
  * @author Leandro Klein
  */
-public interface Carrinho {
+public interface ICarrinho {
     void adicionaAoCarrinho(Produto produto);
 }
