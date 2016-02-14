@@ -29,4 +29,8 @@ public class Carrinho implements nucleoEcommerce.interfaces.ICarrinho{
     public void adicionaAoCarrinho(Produto produto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getPrecoTotal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -17,6 +17,7 @@ import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.OAuthTokenCredential;
 import com.paypal.base.rest.PayPalRESTException;
+import gerenciaProcessoCompra.model.Carrinho;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import nucleoEcommerce.vo.Cliente;
+import nucleoEcommerce.vo.Produto;
 
 /**
  *
@@ -38,12 +41,13 @@ import javax.servlet.http.HttpServletRequest;
 @SessionScoped
 public class PagamentoPaypal {
 
-    private String paymentId;
-    private String payerId;
-    private String token;
-    private String resultado;
+    private String paymentId ="";
+    private String payerId="";
+    private String token="";
+    private String resultado="";
+    
 
-    public void pagar() {
+    public void pagar(Cliente cliente, Carrinho carrinho) {
         Map<String, String> sdkConfig = new HashMap<String, String>();
         sdkConfig.put("mode", "sandbox");
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -56,20 +60,18 @@ public class PagamentoPaypal {
 
             Payer payer = new Payer();
             payer.setPaymentMethod("paypal");
-
-            Item item = new Item("Coisa", "1", "12", "USD");
-            Item item2 = new Item("Coisa2", "1", "12", "USD");
-
             List<Item> items = new ArrayList<Item>();
-            items.add(item);
-            items.add(item2);
-
+            
+            for(Produto produto : carrinho.getListaDeProdutos()){
+                items.add(new Item(produto.getNome(), "" ,String.valueOf(produto.getPreco()), "BRL"));
+            }
+            
             ItemList list = new ItemList();
             list.setItems(items);
 
             Amount amount = new Amount();
-            amount.setCurrency("USD");
-            amount.setTotal("24");
+            amount.setCurrency("BRL");
+            amount.setTotal(carrinho.getPrecoTotal());
 
             Transaction transaction = new Transaction();
             transaction.setItemList(list);
