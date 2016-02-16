@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ecom?useSSL=true</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.default_schema">public</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping class="nucleoEcommerce.vo.Cidade"/>
+    <mapping class="nucleoEcommerce.vo.Cliente"/>
+    <mapping class="nucleoEcommerce.vo.CupomDesconto"/>
+    <mapping class="nucleoEcommerce.vo.Endereco"/>
+    <mapping class="nucleoEcommerce.vo.Estado"/>
+    <mapping class="nucleoEcommerce.vo.Produto"/>
+    <mapping class="nucleoEcommerce.vo.Vendas"/>
+  </session-factory>
+</hibernate-configuration>

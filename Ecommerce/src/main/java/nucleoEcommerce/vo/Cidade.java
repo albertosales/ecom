@@ -7,20 +7,19 @@ package nucleoEcommerce.vo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import nucleoEcommerce.enumeradores.CategoriaProdutos;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Leandro Klein
  */
 @Entity
-public class Produto {
+public class Cidade {
     @Id
     private int id;
     private String nome;
-    private double preco, desconto;
-    
-    private CategoriaProdutos categoria;
+    @ManyToOne
+    private Estado estado;
 
     public int getId() {
         return id;
@@ -38,19 +37,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreco() {
-        return preco;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public CategoriaProdutos getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaProdutos categoria) {
-        this.categoria = categoria;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

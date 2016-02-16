@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nucleoEcommerce.interfaces;
-
-import nucleoEcommerce.vo.Produto;
+package nucleoEcommerce.enumeradores;
 
 /**
  *
  * @author Leandro Klein
  */
-public interface Carrinho {
-    void adicionaAoCarrinho(Produto produto);
+public enum FormaDePagamento {
+    Boleto, Paypal, CartaoCredito
 }

@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gerenciaProcessoCompra.model.vo;
+package nucleoEcommerce.interfaces;
 
 import nucleoEcommerce.vo.Produto;
+
 /**
  *
  * @author Leandro Klein
  */
-public class Carrinho implements nucleoEcommerce.interfaces.Carrinho {
-
-    @Override
-    public void adicionaAoCarrinho(Produto produto) {
-        //a implementar 
-    }
-    
+public interface ICarrinho {
+    void adicionaAoCarrinho(Produto produto);
 }

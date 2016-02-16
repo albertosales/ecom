@@ -296,7 +296,8 @@ html {
   opacity: 1;
 }
 .slider-hero-caption {
-  max-width: 40% position: relative;
+  max-width: 40%;
+  position: relative;  
 }
 .slider-hero-caption.max-60 {
   max-width: 60%;
@@ -441,7 +442,7 @@ html {
   font-size: 11px;
   text-transform: uppercase;
 }
-.navbar-default.navbar-hero .navbar-nav > li > a .transition(all 400ms ease-in-out 0s) i {
+.navbar-default.navbar-hero .navbar-nav > li > a.transition (all 400ms ease-in-out 0s) i {
   font-size: 14px;
 }
 .navbar-default.navbar-hero .navbar-nav > li > ul > li a {
