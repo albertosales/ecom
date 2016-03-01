@@ -19,7 +19,6 @@ public class Produto {
     private int id;
     private String nome;
     private double preco, desconto;
-    
     private CategoriaProdutos categoria;
 
     public int getId() {

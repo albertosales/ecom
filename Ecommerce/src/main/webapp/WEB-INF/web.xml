@@ -19,7 +19,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>HTML/checkout-0.xhtml</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <context-param>
         <param-name>primefaces.theme</param-name>
