@@ -5,20 +5,31 @@
  */
 package nucleoEcommerce.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Frede
  */
-public class Estoque{
+@Entity
+public class Estoque {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @OneToOne
     private Produto produto;
+
     private int compra, venda;
     private Date data;
-    
+
     public int getId() {
         return id;
     }
@@ -58,14 +69,14 @@ public class Estoque{
     public void setData(Date data) {
         this.data = data;
     }
-    
-    public void atualizarEstoqueCompra(List<Produto> produtos){
-          this.compra = produtos.size();
+
+    public void atualizarEstoqueCompra(List<Produto> produtos) {
+        this.compra = produtos.size();
     }
-    
-    public void atualizarEstoqueVenda(List<Produto> produtos){
-          this.venda = produtos.size();
-        
+
+    public void atualizarEstoqueVenda(List<Produto> produtos) {
+        this.venda = produtos.size();
+
     }
-    
+
 }

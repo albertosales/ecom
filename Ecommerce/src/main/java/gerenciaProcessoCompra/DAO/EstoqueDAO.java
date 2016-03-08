@@ -13,16 +13,36 @@ import nucleoEcommerce.vo.Estoque;
  *
  * @author Frede
  */
-public class EstoqueDAO extends DAO<Estoque>{
-    
+public class EstoqueDAO extends DAO<Estoque> {
+
+    private static EstoqueDAO dao;
+
     public EstoqueDAO(Class<Estoque> classe) {
         super(classe);
     }
 
-    public List<Estoque> getEstoquePorPeriodo(Date inicio, Date fim){
+    public static EstoqueDAO getInstance() {
+        if (dao == null) {
+            dao = new EstoqueDAO(Estoque.class);
+        }
+        return dao;
+    }
+
+    public List<Estoque> getEstoquePorPeriodo(Date inicio, Date fim) {
         String hql = "";
-        
+
         return null;
-    } 
+    }
+
+    public long getEstoqueAtual(int produtoId) {
+        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM Estoque WHERE produto_id = :produtoId";
+        return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).uniqueResult();
+    }
+
+    public void saveAll(List<Estoque> estoques){
+        for (Estoque estoque : estoques) {
+            getInstance().save(estoque);
+        }
+    }
     
 }

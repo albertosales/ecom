@@ -15,6 +15,7 @@ import nucleoEcommerce.enumeradores.CategoriaProdutos;
  */
 @Entity
 public class Produto {
+    
     @Id
     private int id;
     private String nome;

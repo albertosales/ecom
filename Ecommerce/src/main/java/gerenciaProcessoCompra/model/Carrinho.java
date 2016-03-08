@@ -33,4 +33,14 @@ public class Carrinho implements nucleoEcommerce.interfaces.ICarrinho{
     public String getPrecoTotal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public int getQuantidade(Produto produto){
+        int qnt = 0;
+        for (Produto prod : listaDeProdutos) {
+            if(prod.getId() == produto.getId()){
+                qnt++;
+            }
+        }
+        return qnt;
+    }
 }

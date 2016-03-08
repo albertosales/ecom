@@ -17,9 +17,11 @@ import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.OAuthTokenCredential;
 import com.paypal.base.rest.PayPalRESTException;
+import gerenciaProcessoCompra.DAO.EstoqueDAO;
 import gerenciaProcessoCompra.model.Carrinho;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import nucleoEcommerce.vo.Cliente;
 import nucleoEcommerce.vo.Produto;
+import nucleoEcommerce.vo.Estoque;
 
 /**
  *
@@ -41,11 +44,11 @@ import nucleoEcommerce.vo.Produto;
 @SessionScoped
 public class PagamentoPaypal {
 
-    private String paymentId ="";
-    private String payerId="";
-    private String token="";
-    private String resultado="";
-    
+    private String paymentId = "";
+    private String payerId = "";
+    private String token = "";
+    private String resultado = "";
+    private List<Estoque> listaEstoque;
 
     public void pagar(Cliente cliente, Carrinho carrinho) {
         Map<String, String> sdkConfig = new HashMap<String, String>();
@@ -61,11 +64,18 @@ public class PagamentoPaypal {
             Payer payer = new Payer();
             payer.setPaymentMethod("paypal");
             List<Item> items = new ArrayList<Item>();
-            
-            for(Produto produto : carrinho.getListaDeProdutos()){
-                items.add(new Item(produto.getNome(), "" ,String.valueOf(produto.getPreco()), "BRL"));
+            listaEstoque = new ArrayList<>();
+
+            Date data = new Date();
+            for (Produto produto : carrinho.getListaDeProdutos()) {
+                items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
+                Estoque estoque = new Estoque();
+                estoque.setProduto(produto);
+                estoque.setVenda(carrinho.getQuantidade(produto));
+                estoque.setData(data);
+                listaEstoque.add(estoque);
             }
-            
+
             ItemList list = new ItemList();
             list.setItems(items);
 
@@ -110,16 +120,15 @@ public class PagamentoPaypal {
             APIContext apiContext = new APIContext(accessToken);
             apiContext.setConfigurationMap(sdkConfig);
 
-
             Payment payment = new Payment();
             payment.setId(getPaymentId());
             PaymentExecution paymentExecute = new PaymentExecution();
             paymentExecute.setPayerId(getPayerId());
             Payment result = payment.execute(apiContext, paymentExecute);
-            if (result.getState().equals("approved")) {
+            if (result.getState().toLowerCase().equals("approved")) {
                 resultado = "Aprovado";
+                EstoqueDAO.getInstance().saveAll(listaEstoque);
             }
-            System.out.println(resultado);
         } catch (PayPalRESTException ex) {
             resultado = "Não aprovado";
             Logger.getLogger(PagamentoPaypal.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
@@ -157,5 +166,5 @@ public class PagamentoPaypal {
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
-    
+
 }

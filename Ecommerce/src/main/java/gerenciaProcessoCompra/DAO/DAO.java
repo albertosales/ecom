@@ -25,6 +25,10 @@ public class DAO<VO> {
         s = HibernateUtil.getSession().openSession();
     }
 
+    public Session getSession() {
+        return s;
+    }
+
     public void save(VO vo) {
         t = s.beginTransaction();
         s.merge(vo);
@@ -43,8 +47,18 @@ public class DAO<VO> {
         t.commit();
     }
 
+    public void saveOrUpdate(VO vo) {
+        t = s.beginTransaction();
+        s.saveOrUpdate(vo);
+        t.commit();
+    }
+
     public List<VO> getAll() {
         return (List<VO>) s.createCriteria(classe).list();
     }
 
+    public VO getById(int id){
+        return s.get(classe, id);
+    }
+    
 }

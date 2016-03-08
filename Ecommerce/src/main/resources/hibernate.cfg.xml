@@ -18,5 +18,6 @@
     <mapping class="nucleoEcommerce.vo.Estado"/>
     <mapping class="nucleoEcommerce.vo.Produto"/>
     <mapping class="nucleoEcommerce.vo.Vendas"/>
+    <mapping class="nucleoEcommerce.vo.Estoque"/>
   </session-factory>
 </hibernate-configuration>
