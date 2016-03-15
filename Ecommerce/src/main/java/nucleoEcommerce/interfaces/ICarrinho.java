@@ -5,12 +5,12 @@
  */
 package nucleoEcommerce.interfaces;
 
-import nucleoEcommerce.vo.Produto;
+import nucleoEcommerce.vo.ItemProduto;
 
 /**
  *
  * @author Leandro Klein
  */
 public interface ICarrinho {
-    void adicionaAoCarrinho(Produto produto);
+    void adicionaAoCarrinho(ItemProduto itemProduto);
 }
