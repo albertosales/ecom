@@ -11,13 +11,13 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping class="nucleoEcommerce.vo.Cidade"/>
-    <mapping class="nucleoEcommerce.vo.Cliente"/>
-    <mapping class="nucleoEcommerce.vo.CupomDesconto"/>
-    <mapping class="nucleoEcommerce.vo.Endereco"/>
-    <mapping class="nucleoEcommerce.vo.Estado"/>
-    <mapping class="nucleoEcommerce.vo.Produto"/>
-    <mapping class="nucleoEcommerce.vo.Vendas"/>
-    <mapping class="nucleoEcommerce.vo.Estoque"/>
+    <mapping class="br.com.sales.dao.vo.Cidade"/>
+    <mapping class="br.com.sales.dao.vo.Cliente"/>
+    <mapping class="br.com.sales.dao.vo.CupomDesconto"/>
+    <mapping class="br.com.sales.dao.vo.Endereco"/>
+    <mapping class="br.com.sales.dao.vo.Estado"/>
+    <mapping class="br.com.sales.dao.vo.Produto"/>
+    <mapping class="br.com.sales.dao.vo.Vendas"/>
+    <mapping class="br.com.sales.dao.vo.Estoque"/>
   </session-factory>
 </hibernate-configuration>
