@@ -6,7 +6,7 @@
 package gerenciaProcessoCompra.model;
 
 import java.util.ArrayList;
-import nucleoEcommerce.vo.Produto;
+import nucleoEcommerce.vo.ItemProduto;
 
 /**
  *
@@ -15,32 +15,27 @@ import nucleoEcommerce.vo.Produto;
 
 public class Carrinho implements nucleoEcommerce.interfaces.ICarrinho{
     
-    private ArrayList<Produto> listaDeProdutos;
+    private ArrayList<ItemProduto> listaDeProdutos;
 
-    public ArrayList<Produto> getListaDeProdutos() {
+    public ArrayList<ItemProduto> getListaDeProdutos() {
         return listaDeProdutos;
     }
 
-    public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
+    public void setListaDeProdutos(ArrayList<ItemProduto> listaDeProdutos) {
         this.listaDeProdutos = listaDeProdutos;
     }
 
     @Override
-    public void adicionaAoCarrinho(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void adicionaAoCarrinho(ItemProduto produto) {
+        listaDeProdutos.add(produto);
     }
 
-    public String getPrecoTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getQuantidade(Produto produto){
-        int qnt = 0;
-        for (Produto prod : listaDeProdutos) {
-            if(prod.getId() == produto.getId()){
-                qnt++;
-            }
+    public double getPrecoTotal() {
+        double total = 0.0;
+        for(ItemProduto itemProduto : listaDeProdutos){
+            total = itemProduto.getQtde() * itemProduto.getProduto().getPreco();
         }
-        return qnt;
+        return total;
     }
+   
 }
