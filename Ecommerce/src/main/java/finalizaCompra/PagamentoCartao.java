@@ -30,6 +30,7 @@ import javax.faces.bean.SessionScoped;
 import nucleoEcommerce.vo.Cliente;
 import nucleoEcommerce.vo.Produto;
 import nucleoEcommerce.vo.Estoque;
+import nucleoEcommerce.vo.ItemProduto;
 
 /**
  *
@@ -69,11 +70,11 @@ public class PagamentoCartao {
 
             listaEstoque = new ArrayList<>();
             Date data = new Date();
-            for (Produto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
+            for (ItemProduto itemProduto : carrinho.getListaDeProdutos()) {
+                items.add(new Item(itemProduto.getProduto().getNome(), String.valueOf(itemProduto.getQtde()), String.valueOf(itemProduto.getProduto().getPreco()), "BRL"));
                 Estoque estoque = new Estoque();
-                estoque.setProduto(produto);
-                estoque.setVenda(carrinho.getQuantidade(produto));
+                estoque.setProduto(itemProduto.getProduto());
+                estoque.setVenda(itemProduto.getQtde());
                 estoque.setData(data);
                 listaEstoque.add(estoque);
             }
@@ -87,7 +88,7 @@ public class PagamentoCartao {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(carrinho.getPrecoTotal());
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
 
             Transaction transaction = new Transaction();
             transaction.setDescription("creating a direct payment with credit card");
