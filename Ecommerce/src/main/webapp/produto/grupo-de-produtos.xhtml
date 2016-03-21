@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns ="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Administração de Grupos de Produtos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form acceptcharset="ISO-8859-1">
+            <p:dataTable value="#{grupoProdutoService.listaGrupos}" sortMode="multiple" rows="25" paginator="true"
+                         var="grupo">
+                <f:facet name="header">
+                    <h:outputText value="Manutenção de Grupos de Produtos"/>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Código" />
+                    </f:facet>
+                    <h:outputText value="#{grupo.id}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome" />
+                    </f:facet>
+                    <h:outputText value="#{grupo.nome}"/>
+                </p:column>
+
+
+                <p:column>
+                    <f:facet name="header">
+                        <p:commandButton action="/produto/grupo-de-produtos.xhtml" icon="ui-icon-plus">
+                        </p:commandButton>
+                    </f:facet>
+                    <p:commandButton
+                        action="#{grupoProdutoService.update(entity)}" icon="ui-icon-pencil" value="Alterar">
+                        <f:setPropertyActionListener value="#{grupo}"
+                                                     target="#{grupoProdutoService.grupo}"/>
+                    
+                    </p:commandButton>
+                    <p:commandButton 
+                        action="#{grupoProdutoService.delete(id)}" icon="ui-icon-close" value="Excluir">
+                        <f:setPropertyActionListener value="#{grupo}"
+                                                     target="#{grupoProdutoService.grupo}"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>    
+
+        </h:form>
+
+
+
+        <h:form acceptcharset="ISO-8859-1" enctype="multipart/form-data" >
+            <p:messages id="messages" closable="true"/>
+            <h:inputHidden value="#{grupoProdutoService.grupo.id}"/>
+
+            <!--        <h:panelGrid columns="2">-->
+            <p:panel header="Cadastro de novo Grupo ou Alteração">
+
+                <h:outputLabel value="Nome: " for="nome"/>
+                <p:inputText id="nome" size="50"
+                             value="#{grupoProdutoService.grupo.nome}"
+                             required="true"
+                             requiredMessage="É necessário informar o nome do grupo."/>
+
+                <h:form>
+                    <p:panel>
+
+                        <p:commandButton ajax="false"
+                                         value="Cadastrar novo Grupo de Produtos"
+                                         action="#{grupoProdutoService.persist(entity)}"/>
+                        <p:commandButton value="Cancelar"
+                                         type="reset"/>
+                    </p:panel>
+                </h:form>
+
+            </p:panel>
+        </h:form>
+
+    </body>
+</html>

@@ -19,5 +19,8 @@
     <mapping class="br.com.sales.dao.vo.Produto"/>
     <mapping class="br.com.sales.dao.vo.Vendas"/>
     <mapping class="br.com.sales.dao.vo.Estoque"/>
+    <mapping class="br.com.sales.dao.vo.ProdutoVO"/>
+    <mapping class="br.com.sales.dao.vo.GrupoProduto"/>
+    <mapping class="br.com.sales.dao.vo.Item"/>
   </session-factory>
 </hibernate-configuration>
