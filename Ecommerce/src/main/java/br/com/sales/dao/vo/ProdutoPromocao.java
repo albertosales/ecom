@@ -1,4 +1,4 @@
-package nucleoEcommerce.vo;
+package br.com.sales.dao.vo;
 
 import java.util.Date;
 
