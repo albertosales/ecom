@@ -4,7 +4,10 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="PT-BR">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core">
     <head>
         <title>TSHOP - cadastro de Produtos</title>
         <meta charset="UTF-8">
@@ -756,8 +759,12 @@ and open the template in the editor.
                             </div>
                             <div id="collapse2" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <form class="form-horizontal">
-                                        <input type="hidden" value="{{produtoService.produto.id}}"/>
+                                    <h:form class="form-horizontal">
+                                       <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento paypal" action="#{pagamentoPaypal.pagar()}"/>
+                                    </h:form>
+                                         <h: value="#{produtoService.teste()}"/>
+                                        </h:form>
+                                       
                                         <fieldset>
 
                                             <!-- Form Name -->
@@ -769,7 +776,7 @@ and open the template in the editor.
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Nome do produto</label>
                                                 <div class="col-md-4">
-                                                    <input id="textinput"  name="textinput" placeholder="Descricao do Produto"
+                                                    <input id="textinput"  name="textinput" placeholder="Descricao do Produto" 
                                                            class="form-control input-md" type="text" 
                                                            value="">
                                                 </div>

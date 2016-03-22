@@ -112,6 +112,10 @@ public class ProdutoService {
     public void update(ProdutoVO entity) {
         br.com.sales.compra.DAO.ProdutoVoDAO.getInstance().update(produtovo);
     }
+    
+    public void teste(){
+        System.out.println("Teste");
+    }
 
     public String preparaAlteracao(ProdutoVO entity) { 
       return "/produto/teste-tabela-produtos.xhtml";
