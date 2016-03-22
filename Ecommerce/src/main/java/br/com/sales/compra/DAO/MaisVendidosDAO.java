@@ -29,10 +29,9 @@ public class MaisVendidosDAO extends DAO<MaisVendidos>  {
         return dao;
     }
 
-    public List<Vendas> getEstoquePorPeriodo(Date inicio, Date fim) {
-        String hql = "";
-
-        return null;
+    public List<Vendas> getListaDeProdutos(Date inicio, Date fim) {
+        String hql = "FROM Vendas";
+        return getInstance().getSession().createQuery(hql).list();
     }
 
 }
