@@ -34,10 +34,10 @@ public class ProdutoVO implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.REFRESH})
     private GrupoProduto grupo;
-    private boolean promocao;
+ //   private boolean promocao;
    
     public ProdutoVO() {
-        promocao = false;
+ //       promocao = false;
         grupo = new GrupoProduto();
     }
 
@@ -94,13 +94,13 @@ public class ProdutoVO implements Serializable {
         this.grupo = grupo;
     }
 
-     public boolean isPromocao() {
+/**     public boolean isPromocao() {
         return promocao;
     }
 
     public void setPromocao(boolean promocao) {
         this.promocao = promocao;
-    }
+    }  */
     
     @Override
     public String toString() {

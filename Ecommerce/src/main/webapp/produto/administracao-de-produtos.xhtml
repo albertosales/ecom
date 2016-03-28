@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>TSHOP - cadastro de Produtos</title>
+        <title>TSHOP - Tabela de Produtos</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -756,6 +756,97 @@ and open the template in the editor.
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="collapseWill">
+                                        Apresentação de Produtos <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
+                            </div>
+
+
+
+                            <h:form acceptcharset="ISO-8859-1">
+                                <p:dataTable value="#{produtoService.listaProdutos}" sortMode="multiple" rows="25" paginator="true"
+                                             var="produtovo">
+                                    <f:facet name="header">
+                                        <h:outputText value="Produtos"/>
+                                    </f:facet>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Código" />
+                                        </f:facet>
+                                        <h:outputText value="#{produtovo.id}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nome" />
+                                        </f:facet>
+                                        <h:outputText value="#{produtovo.nome}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Foto" />
+                                        </f:facet>
+                                        <h:outputText value="#{produtovo.foto}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Preço" />
+                                        </f:facet>
+                                        <h:outputText value="#{produtovo.preco}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Grupo" />
+                                        </f:facet>
+                                        <h:outputText value="#{produtovo.grupo.nome}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <p:button href="/produto/cadastro-produto.xhtml" icon="ui-icon-plus" value="NOVO"/>
+                                            
+                                        </f:facet>
+                                        <p:commandButton
+                                            action="#{produtoService.preparaAlteracao(entity)}" icon="ui-icon-pencil" value="Altera"
+                                            ajax="false">
+                                            <f:setPropertyActionListener value="#{produtovo}"
+                                                                         target="#{produtoService.produtovo}"/>                             
+
+                                        </p:commandButton>
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton 
+                                            action="#{produtoService.delete(id)}" icon="ui-icon-close" value="Remove" ajax="false">
+                                            <f:setPropertyActionListener value="#{produtovo}"
+                                                                         target="#{produtoService.produtovo}"/>                             
+
+                                        </p:commandButton>
+                                    </p:column>
+
+
+                                </p:dataTable>    
+                            </h:form>
+
+                            
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /main container -->
+            
+            <!--Cadastro ou Auteraçao de Produtos -->
+            <div class="container">
+                <div class="row">
+
+                    <div class=" col-lg-8">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="collapseWill">
                                         Cadastro de Produtos <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
                             </div>
 
@@ -804,6 +895,11 @@ and open the template in the editor.
                                                     <h:outputLabel value="Escolher Imagem " for="imagem"/>
                                                     <p:fileUpload value="#{produtoService.file}" mode="simple" skinSimple="true"/> 
 
+
+
+
+
+
                                                     <p:panel> 
                                                         <p:commandButton ajax="false"
                                                                          value="Salvar"
@@ -813,8 +909,11 @@ and open the template in the editor.
                                                     </p:panel>
 
                                                 </p:panel>
+
+
+
                                             </h:form>
-                                            <p:button href="/produto/administracao-de-produtos.xhtml" value="Tabela de Produtos"/>
+
                                         </fieldset>
                                     </div>
                                 </div>
@@ -823,6 +922,7 @@ and open the template in the editor.
                     </div>
                 </div>
             </div><!-- /main container -->
+            
         </div>
 
         <div class="gap"></div>
@@ -971,3 +1071,4 @@ and open the template in the editor.
 
     </body>
 </html>
+

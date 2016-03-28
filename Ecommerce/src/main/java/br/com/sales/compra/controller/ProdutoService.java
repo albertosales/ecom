@@ -118,7 +118,7 @@ public class ProdutoService {
     }
 
     public String preparaAlteracao(ProdutoVO entity) { 
-      return "/produto/teste-tabela-produtos.xhtml";
+      return "/produto/administracao-de-produtos.xhtml";
     }
 
     public ProdutoVO findById(String id) {

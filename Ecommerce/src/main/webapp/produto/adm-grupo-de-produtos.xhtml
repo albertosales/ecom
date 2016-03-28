@@ -756,69 +756,80 @@ and open the template in the editor.
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="collapseWill">
-                                        Cadastro de Produtos <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
+                                        manutençao de Grupos de Produtos <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
                             </div>
 
+                            <h:form acceptcharset="ISO-8859-1">
+                                <p:dataTable value="#{grupoProdutoService.listaGrupos}" sortMode="multiple" rows="25" paginator="true"
+                                             var="grupo">
+                                    <f:facet name="header">
+                                        <h:outputText value="Manutenção de Grupos de Produtos"/>
+                                    </f:facet>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Código" />
+                                        </f:facet>
+                                        <h:outputText value="#{grupo.id}"/>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nome" />
+                                        </f:facet>
+                                        <h:outputText value="#{grupo.nome}"/>
+                                    </p:column>
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <p:commandButton action="/produto/adm-grupo-de-produtos.xhtml" icon="ui-icon-plus">
+                                            </p:commandButton>
+                                        </f:facet>
+                                        <p:commandButton
+                                            action="#{grupoProdutoService.update(entity)}" icon="ui-icon-pencil" value="Alterar" ajax="false">
+                                            <f:setPropertyActionListener value="#{grupo}"
+                                                                         target="#{grupoProdutoService.grupo}"/>
+
+                                        </p:commandButton>
+                                        <p:commandButton 
+                                            action="#{grupoProdutoService.delete(id)}" icon="ui-icon-close" value="Excluir" ajax="false">
+                                            <f:setPropertyActionListener value="#{grupo}"
+                                                                         target="#{grupoProdutoService.grupo}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>    
+
+                            </h:form>
+
                             <h:form acceptcharset="ISO-8859-1" enctype="multipart/form-data" >
-                                <div id="collapse2" class="panel-collapse collapse in">
-                                    <div class="panel-body">
+                                <p:messages id="messages" closable="true"/>
+                                <h:inputHidden value="#{grupoProdutoService.grupo.id}"/>
 
-                                        <fieldset>
+                                <!--        <h:panelGrid columns="2">-->
+                                <p:panel header="Cadastro de novo Grupo ou Alteração">
 
-                                            <!-- Form Name -->
-                                            <legend>Cadastro de Produtos</legend>
+                                    <h:outputLabel value="Nome: " for="nome"/>
+                                    <p:inputText id="nome" size="50"
+                                                 value="#{grupoProdutoService.grupo.nome}"
+                                                 required="true"
+                                                 requiredMessage="É necessário informar o nome do grupo."/>
 
+                                    <h:form>
+                                        <p:panel>
 
-                                            <!-- Inicio Formulario Cadastro de Produtos -->
-                                            <h:form acceptcharset="ISO-8859-1" enctype="multipart/form-data" >
-                                                <p:messages id="messages" closable="true"/>
-                                                <!-- ATENCAO, APAGUEI ID -->
+                                            <p:commandButton ajax="false"
+                                                             value="Cadastrar ou Alterar Grupo de Produtos"
+                                                             action="#{grupoProdutoService.persist(entity)}"/>
+                                            <p:commandButton value="Cancelar"
+                                                             type="reset"/>
+                                        </p:panel>
+                                    </h:form>
 
-                                                <p:panel>
-                                                    <h:panelGrid columns="2">
-
-                                                        <h:outputLabel value="Nome: " for="nome"/>
-                                                        <p:inputText id="nome" size="50"
-                                                                     value="#{produtoService.produtovo.nome}"
-                                                                     required="true"
-                                                                     requiredMessage="É necessário informar o nome do produto."/>
-
-                                                        <h:outputLabel value="Preço: " for="preco"/>
-                                                        <p:inputText id="preco" size="10"
-                                                                     value="#{produtoService.produtovo.preco}"/>
-
-                                                        <h:outputLabel value="Grupo: " for="grupo"/>
-
-                                                        <h:selectOneMenu id="grupo" value="#{produtoService.grupoid}">  
-                                                            <f:selectItem itemLabel="Selecione" 
-                                                                          noSelectionOption="true" />  
-                                                            <f:selectItems value="#{grupoProdutoService.listaGrupos}" var="grupo" 
-                                                                           itemLabel="#{grupo.nome}" 
-                                                                           itemValue="#{grupo.id}"/>  
-                                                        </h:selectOneMenu> 
+                                </p:panel>
+                            </h:form>
 
 
-                                                    </h:panelGrid>
-
-
-                                                    <h:outputLabel value="Escolher Imagem " for="imagem"/>
-                                                    <p:fileUpload value="#{produtoService.file}" mode="simple" skinSimple="true"/> 
-
-                                                    <p:panel> 
-                                                        <p:commandButton ajax="false"
-                                                                         value="Salvar"
-                                                                         action="#{produtoService.persist(entity)}"/>
-                                                        <p:commandButton value="Cancelar"
-                                                                         type="reset"/>
-                                                    </p:panel>
-
-                                                </p:panel>
-                                            </h:form>
-                                            <p:button href="/produto/administracao-de-produtos.xhtml" value="Tabela de Produtos"/>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </h:form>   
                         </div>
                     </div>
                 </div>
@@ -971,3 +982,4 @@ and open the template in the editor.
 
     </body>
 </html>
+
