@@ -4,11 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns ="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:cc="http://xmlns.jcp.org/jsf/composite">
     <h:head>
         <title>TSHOP - cadastro de Produtos</title>
         <meta charset="UTF-8"/>
@@ -803,6 +805,10 @@ and open the template in the editor.
 
                                                     <h:outputLabel value="Escolher Imagem " for="imagem"/>
                                                     <p:fileUpload value="#{produtoService.file}" mode="simple" skinSimple="true"/> 
+
+                                                 <!--    <p:fileUpload id="upload"
+                                                                  fileUploadListener="" mode="advanced" dragDropSupport="false"
+                                                                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />-->
 
                                                     <p:panel> 
                                                         <p:commandButton ajax="false"
