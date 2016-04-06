@@ -740,7 +740,7 @@
             
 
             <h:form id="formm" >
-                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento paypal" action="#{pagamentoPaypal.pagar()}"/>
+                <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento paypal" action="#{pagamentoPaypal.pagar(cliente, carrinho)}"/>
                 <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Gerar Boleto" action="#{geraBoleto.gerarBoleto()}"/>
                 <h:outputLabel class="block-title-2" value="#{pagamentoPaypal.resultado}" />
                 <f:metadata>
