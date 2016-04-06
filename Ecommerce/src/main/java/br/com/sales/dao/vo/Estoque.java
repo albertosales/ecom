@@ -25,7 +25,7 @@ public class Estoque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    private Produto produto;
+    private ProdutoVO produto;
 
     private int compra, venda;
     private Date data;
@@ -38,11 +38,11 @@ public class Estoque {
         this.id = id;
     }
 
-    public Produto getProduto() {
+    public ProdutoVO getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(ProdutoVO produto) {
         this.produto = produto;
     }
     

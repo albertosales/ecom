@@ -6,7 +6,7 @@
 package br.com.sales.compra.model;
 
 import java.util.ArrayList;
-import br.com.sales.dao.vo.Produto;
+import br.com.sales.dao.vo.ItemProduto;
 
 /**
  *
@@ -15,31 +15,33 @@ import br.com.sales.dao.vo.Produto;
 
 public class Carrinho implements br.com.sales.interfaces.ICarrinho{
     
-    private ArrayList<Produto> listaDeProdutos;
+    private ArrayList<ItemProduto> listaDeProdutos;
 
-    public ArrayList<Produto> getListaDeProdutos() {
+    public ArrayList<ItemProduto> getListaDeProdutos() {
         return listaDeProdutos;
     }
 
-    public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
+    public void setListaDeProdutos(ArrayList<ItemProduto> listaDeProdutos) {
         this.listaDeProdutos = listaDeProdutos;
     }
 
     @Override
-    public void adicionaAoCarrinho(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void adicionaAoCarrinho(ItemProduto itemProduto) {
+        listaDeProdutos.add(itemProduto);
     }
 
-    public String getPrecoTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double getPrecoTotal() {
+        double precoTotal = 0.0;
+        for(ItemProduto produto : listaDeProdutos){
+            precoTotal += produto.getProduto().getPreco();
+        }
+        return precoTotal;
     }
 
-    public int getQuantidade(Produto produto){
+    public int getQuantidade(){
         int qnt = 0;
-        for (Produto prod : listaDeProdutos) {
-            if(prod.getId() == produto.getId()){
-                qnt++;
-            }
+        for(ItemProduto produto : listaDeProdutos){
+            qnt += produto.getQuantidade();
         }
         return qnt;
     }
