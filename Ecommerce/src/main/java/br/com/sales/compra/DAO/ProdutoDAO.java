@@ -7,7 +7,7 @@ package br.com.sales.compra.DAO;
 
 import java.util.Date;
 import java.util.List;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.EstoqueVO;
 import br.com.sales.dao.vo.Produto;
 
 /**
@@ -29,7 +29,7 @@ public class ProdutoDAO extends DAO<Produto> {
         return dao;
     }
 
-    public List<Estoque> getEstoquePorPeriodo(Date inicio, Date fim) {
+    public List<EstoqueVO> getEstoquePorPeriodo(Date inicio, Date fim) {
         String hql = "";
 
         return null;

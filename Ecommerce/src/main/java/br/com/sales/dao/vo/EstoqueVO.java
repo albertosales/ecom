@@ -5,7 +5,6 @@
  */
 package br.com.sales.dao.vo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -19,13 +18,13 @@ import javax.persistence.OneToOne;
  * @author Frede
  */
 @Entity
-public class Estoque {
+public class EstoqueVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    private Produto produto;
+    private ProdutoVO produto;
 
     private int compra, venda;
     private Date data;
@@ -38,11 +37,11 @@ public class Estoque {
         this.id = id;
     }
 
-    public Produto getProduto() {
+    public ProdutoVO getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(ProdutoVO produto) {
         this.produto = produto;
     }
     

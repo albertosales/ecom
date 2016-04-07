@@ -7,7 +7,7 @@ package br.com.sales.compra.model;
 
 import br.com.sales.compra.DAO.EstoqueDAO;
 import br.com.sales.compra.DAO.ProdutoDAO;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.EstoqueVO;
 import br.com.sales.dao.vo.Produto;
 
 /**
@@ -16,7 +16,7 @@ import br.com.sales.dao.vo.Produto;
  */
 public class teste {
     public static void main(String[] args) {
-        Estoque vo = new Estoque();
+        EstoqueVO vo = new EstoqueVO();
         Produto prod = new Produto();
         prod.setId(0);
         ProdutoDAO.getInstance().save(prod);

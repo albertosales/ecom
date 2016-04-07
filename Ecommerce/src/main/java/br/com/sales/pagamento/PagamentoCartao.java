@@ -29,7 +29,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import br.com.sales.dao.vo.Cliente;
 import br.com.sales.dao.vo.Produto;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.EstoqueVO;
 
 /**
  *
@@ -40,7 +40,7 @@ import br.com.sales.dao.vo.Estoque;
 public class PagamentoCartao {
 
     private String accessToken;
-    private List<Estoque> listaEstoque;
+    private List<EstoqueVO> listaEstoque;
 
     public void pagar(Cliente cliente, Carrinho carrinho) {
         try {
@@ -71,7 +71,7 @@ public class PagamentoCartao {
             Date data = new Date();
             for (Produto produto : carrinho.getListaDeProdutos()) {
                 items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
-                Estoque estoque = new Estoque();
+                EstoqueVO estoque = new EstoqueVO();
                 estoque.setProduto(produto);
                 estoque.setVenda(carrinho.getQuantidade(produto));
                 estoque.setData(data);
