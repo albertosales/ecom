@@ -7,15 +7,28 @@ package br.com.sales.compra.model;
 
 import java.util.ArrayList;
 import br.com.sales.dao.vo.ItemProduto;
+import br.com.sales.dao.vo.ProdutoVO;
 
 /**
  *
  * @author Leandro Klein
  */
+public class Carrinho implements br.com.sales.interfaces.ICarrinho {
 
-public class Carrinho implements br.com.sales.interfaces.ICarrinho{
-    
     private ArrayList<ItemProduto> listaDeProdutos;
+
+    public Carrinho() {
+        listaDeProdutos = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            ProdutoVO produto = new ProdutoVO();
+            produto.setFoto("images/product/a1.jpg");
+            produto.setId(i);
+            produto.setNome("Teste produto " + i);
+            produto.setPreco((i * 5));
+            ItemProduto item = new ItemProduto(i, produto);
+            listaDeProdutos.add(item);
+        }
+    }
 
     public ArrayList<ItemProduto> getListaDeProdutos() {
         return listaDeProdutos;
@@ -27,20 +40,29 @@ public class Carrinho implements br.com.sales.interfaces.ICarrinho{
 
     @Override
     public void adicionaAoCarrinho(ItemProduto itemProduto) {
-        listaDeProdutos.add(itemProduto);
+        listaDeProdutos.add(itemProduto); 
+    }
+
+    public void removerDoCarrinho(int idProduto) {
+        for (int i = 0; i < listaDeProdutos.size(); i++) {
+            if (listaDeProdutos.get(i).getProduto().getId() == idProduto) {
+                listaDeProdutos.remove(listaDeProdutos.get(i));
+                --i;
+            }
+        }
     }
 
     public double getPrecoTotal() {
         double precoTotal = 0.0;
-        for(ItemProduto produto : listaDeProdutos){
-            precoTotal += produto.getProduto().getPreco();
+        for (ItemProduto produto : listaDeProdutos) {
+            precoTotal += (produto.getProduto().getPreco() * produto.getQuantidade());
         }
         return precoTotal;
     }
 
-    public int getQuantidade(){
+    public int getQuantidade() {
         int qnt = 0;
-        for(ItemProduto produto : listaDeProdutos){
+        for (ItemProduto produto : listaDeProdutos) {
             qnt += produto.getQuantidade();
         }
         return qnt;

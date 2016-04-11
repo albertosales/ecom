@@ -13,6 +13,11 @@ public class ItemProduto {
     private int quantidade;
     private ProdutoVO produto;
 
+    public ItemProduto(int quantidade, ProdutoVO produto){
+        this.quantidade = quantidade;
+        this.produto = produto;
+    }
+    
     public int getQuantidade() {
         return quantidade;
     }
