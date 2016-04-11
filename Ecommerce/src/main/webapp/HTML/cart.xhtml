@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -771,7 +772,7 @@
                                                     </td>
                                                     <td class="delete"><h:commandLink title="Delete" action="#{carrinho.carrinho.removerDoCarrinho(item.produto.id)}"> 
                                                             <i class="glyphicon glyphicon-trash fa-2x"></i></h:commandLink></td>
-                                                    <td><input class="quanitySniper" type="text" value="#{item.quantidade}" id="quanitySniper" /></td>
+                                                            <td><input name="qtd" class="quanitySniper" type="text" value="#{item.quantidade}" id="quanitySniper" /></td>
                                                     <td>0</td>
                                                     <td class="price">R$ #{item.produto.preco * item.quantidade}</td>
                                                 </tr>    
@@ -788,8 +789,8 @@
                                     <div class="pull-left"><a href="index.html" class="btn btn-default"> <i
                                                 class="fa fa-arrow-left"></i> Continue comprando </a></div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-undo"></i> Atualizar carrinho
-                                        </button>
+                                        <!--<i class="fa fa-undo"></i>-->
+                                        <p:commandButton icon="fa fa-undo" value=" Atualizar Carrinho" action="#{carrinho.carrinho.atualizarCarrinho()}" class="btn btn-default"/>
                                     </div>
                                 </div>
                             </div>
