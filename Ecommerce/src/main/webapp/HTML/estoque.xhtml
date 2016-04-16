@@ -808,9 +808,9 @@
                                     <td>
                                         #{prod.nome}
                                     </td>
-                                    <td></td>
+                                    <td>#{estoque.estoqueAtual(prod.id)}</td>
                                     <td data-value="3"><span>R$#{prod.preco}</span></td>
-                                    <td><h:inputText value="#{estoque.quantidadeCompra}" /><h:commandButton value="Comprar" action="#{estoque.adicionarEstoque(prod)}" /></td>
+                                    <td><h:form><h:inputText value="#{estoque.quantidadeCompra}" /><h:commandButton value="Comprar" action="#{estoque.adicionarEstoque(prod)}" /></h:form></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

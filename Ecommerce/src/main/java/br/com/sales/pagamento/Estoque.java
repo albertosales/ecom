@@ -36,12 +36,19 @@ public class Estoque {
         estoque.setProduto(produto);
         estoque.setData(new Date());
         EstoqueDAO.getInstance().save(estoque);
+        quantidadeCompra = 0;
     }
 
-    public void retirarEstoque() {
-
+    public void retirarEstoque(ProdutoVO produto) {
+        EstoqueVO estoque = new EstoqueVO();
+        estoque.setVenda(quantidadeCompra);
+        estoque.setProduto(produto);
+        estoque.setData(new Date());
+        EstoqueDAO.getInstance().save(estoque);
     }
 
+    public long estoqueAtual(int estoqueId){
+        return EstoqueDAO.getInstance().getEstoqueAtual(estoqueId);
+    }
    
-
 }

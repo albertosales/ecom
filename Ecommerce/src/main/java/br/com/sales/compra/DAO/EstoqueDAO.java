@@ -29,12 +29,12 @@ public class EstoqueDAO extends DAO<EstoqueVO> {
     }
 
     public long getEstoquePorPeriodo(Date inicio, Date fim, int produtoId) {
-        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM Estoque WHERE produto_id = :produtoId AND (data >= :inicio AND data <= :fim)";
+        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM EstoqueVO WHERE produto_id = :produtoId AND (data >= :inicio AND data <= :fim)";
         return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).setDate("inicio", inicio).setDate("fim", fim).uniqueResult();
     }
 
     public long getEstoqueAtual(int produtoId) {
-        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM Estoque WHERE produto_id = :produtoId";
+        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM EstoqueVO WHERE produto_id = :produtoId";
         return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).uniqueResult();
     }
 
