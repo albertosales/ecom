@@ -7,29 +7,29 @@ package br.com.sales.compra.DAO;
 
 import java.util.Date;
 import java.util.List;
-import br.com.sales.dao.vo.Estoque;
-import br.com.sales.dao.vo.ProdutoVO;
+import br.com.sales.dao.vo.EstoqueVO;
+import br.com.sales.dao.vo.Produto;
 
 /**
  *
  * @author Frede
  */
-public class ProdutoDAO extends DAO<ProdutoVO> {
+public class ProdutoDAO extends DAO<Produto> {
 
     private static ProdutoDAO dao;
 
-    public ProdutoDAO(Class<ProdutoVO> classe) {
+    public ProdutoDAO(Class<Produto> classe) {
         super(classe);
     }
 
     public static ProdutoDAO getInstance() {
         if (dao == null) {
-            dao = new ProdutoDAO(ProdutoVO.class);
+            dao = new ProdutoDAO(Produto.class);
         }
         return dao;
     }
 
-    public List<Estoque> getEstoquePorPeriodo(Date inicio, Date fim) {
+    public List<EstoqueVO> getEstoquePorPeriodo(Date inicio, Date fim) {
         String hql = "";
 
         return null;
