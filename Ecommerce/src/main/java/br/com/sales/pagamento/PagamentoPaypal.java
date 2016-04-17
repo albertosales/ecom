@@ -33,7 +33,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import br.com.sales.dao.vo.Cliente;
-import br.com.sales.dao.vo.Produto;
+import br.com.sales.dao.vo.ItemProduto;
 import br.com.sales.dao.vo.EstoqueVO;
 
 /**
@@ -67,11 +67,11 @@ public class PagamentoPaypal {
             listaEstoque = new ArrayList<>();
 
             Date data = new Date();
-            for (Produto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
+            for (ItemProduto produto : carrinho.getListaDeProdutos()) {
+                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()), "BRL"));
                 EstoqueVO estoque = new EstoqueVO();
-                estoque.setProduto(produto);
-                estoque.setVenda(carrinho.getQuantidade(produto));
+                estoque.setProduto(produto.getProduto());
+                estoque.setVenda(produto.getQuantidade());
                 estoque.setData(data);
                 listaEstoque.add(estoque);
             }
@@ -81,7 +81,7 @@ public class PagamentoPaypal {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(carrinho.getPrecoTotal());
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
 
             Transaction transaction = new Transaction();
             transaction.setItemList(list);
