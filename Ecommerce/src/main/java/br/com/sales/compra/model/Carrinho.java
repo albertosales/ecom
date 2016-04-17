@@ -8,6 +8,10 @@ package br.com.sales.compra.model;
 import java.util.ArrayList;
 import br.com.sales.dao.vo.ItemProduto;
 import br.com.sales.dao.vo.ProdutoVO;
+import java.awt.event.ActionEvent;
+import java.util.Enumeration;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Request;
 
 /**
  *
@@ -51,7 +55,7 @@ public class Carrinho implements br.com.sales.interfaces.ICarrinho {
             }
         }
     }
-
+      
     public double getPrecoTotal() {
         double precoTotal = 0.0;
         for (ItemProduto produto : listaDeProdutos) {

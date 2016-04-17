@@ -539,7 +539,7 @@ $(document).ready(function () {
     });
 
     // cart quantity changer sniper
-    $("input[id='quanitySniper']").TouchSpin({
+    $("input[name='quanitySniper']").TouchSpin({
         buttondown_class: "btn btn-link",
         buttonup_class: "btn btn-link"
     });

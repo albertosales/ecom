@@ -33,8 +33,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import br.com.sales.dao.vo.Cliente;
-import br.com.sales.dao.vo.ItemProduto;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.Produto;
+import br.com.sales.dao.vo.EstoqueVO;
 
 /**
  *
@@ -48,7 +48,7 @@ public class PagamentoPaypal {
     private String payerId = "";
     private String token = "";
     private String resultado = "";
-    private List<Estoque> listaEstoque;
+    private List<EstoqueVO> listaEstoque;
 
     public void pagar(Cliente cliente, Carrinho carrinho) {
         Map<String, String> sdkConfig = new HashMap<String, String>();
@@ -67,11 +67,11 @@ public class PagamentoPaypal {
             listaEstoque = new ArrayList<>();
 
             Date data = new Date();
-            for (ItemProduto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()), "BRL"));
-                Estoque estoque = new Estoque();
-                estoque.setProduto(produto.getProduto());
-                estoque.setVenda(produto.getQuantidade());
+            for (Produto produto : carrinho.getListaDeProdutos()) {
+                items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
+                EstoqueVO estoque = new EstoqueVO();
+                estoque.setProduto(produto);
+                estoque.setVenda(carrinho.getQuantidade(produto));
                 estoque.setData(data);
                 listaEstoque.add(estoque);
             }
@@ -81,7 +81,7 @@ public class PagamentoPaypal {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
+            amount.setTotal(carrinho.getPrecoTotal());
 
             Transaction transaction = new Transaction();
             transaction.setItemList(list);
@@ -107,7 +107,7 @@ public class PagamentoPaypal {
             externalContext.redirect(links.getHref());
 
         } catch (PayPalRESTException | IOException ex) {
-            Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueVO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
