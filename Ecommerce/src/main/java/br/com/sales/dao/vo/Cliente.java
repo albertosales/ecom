@@ -21,6 +21,10 @@ public class Cliente {
     @ManyToOne
     private Endereco endereco;
 
+    public Cliente(){
+        endereco = new Endereco();
+    }
+    
     public int getId() {
         return id;
     }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.sales.dao.vo;
 
 import javax.persistence.Entity;
@@ -18,9 +14,13 @@ public class Endereco {
     @Id
     private int id;
     private int numero;
-    private String rua;
+    private String rua, bairro;
     @ManyToOne
     private Cidade cidade;
+    
+    public Endereco(){
+        cidade = new Cidade();
+    }
 
     public int getId() {
         return id;
@@ -45,6 +45,14 @@ public class Endereco {
     public void setRua(String rua) {
         this.rua = rua;
     }
+    
+     public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }    
 
     public Cidade getCidade() {
         return cidade;
