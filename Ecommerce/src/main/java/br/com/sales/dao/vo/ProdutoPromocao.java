@@ -1,14 +1,24 @@
 package br.com.sales.dao.vo;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class ProdutoPromocao {
+@Entity
+public class ProdutoPromocao implements Serializable {
     private Date dataInicio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codProduto;
     private String descricao;
     private Date dataExpiracao;
     private double precoProdutoPromocao;
     private int descontoProduto;
+    
+    
 
     public Date getDataInicio() {
         return dataInicio;
