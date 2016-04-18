@@ -61,4 +61,8 @@ public class DAO<VO> {
         return s.get(classe, id);
     }
     
+    public VO getNumNotaFiscal(int numNotaFiscal){
+        return s.get(classe, numNotaFiscal);
+    }
+    
 }
