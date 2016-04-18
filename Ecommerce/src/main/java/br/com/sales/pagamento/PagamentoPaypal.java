@@ -81,7 +81,7 @@ public class PagamentoPaypal {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(carrinho.getPrecoTotal());
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
 
             Transaction transaction = new Transaction();
             transaction.setItemList(list);

@@ -14,17 +14,17 @@ import br.com.sales.dao.vo.Produto;
  *
  * @author Frede
  */
-public class teste {
-    public static void main(String[] args) {
-        EstoqueVO vo = new EstoqueVO();
-        Produto prod = new Produto();
-        prod.setId(0);
-        ProdutoDAO.getInstance().save(prod);
-        prod.setNome("Teste");
-        vo.setProduto(prod);
-        vo.setVenda(70);
-        EstoqueDAO.getInstance().save(vo);
-        
-        System.out.println(EstoqueDAO.getInstance().getEstoqueAtual(prod.getId()));
-    }
-}
+//public class teste {
+//    public static void main(String[] args) {
+//        EstoqueVO vo = new EstoqueVO();
+//        Produto prod = new Produto();
+//        prod.setId(0);
+//        ProdutoDAO.getInstance().save(prod);
+//        prod.setNome("Teste");
+//        vo.setProduto(prod);
+//        vo.setVenda(70);
+//        EstoqueDAO.getInstance().save(vo);
+//        
+//        System.out.println(EstoqueDAO.getInstance().getEstoqueAtual(prod.getId()));
+//    }
+//}

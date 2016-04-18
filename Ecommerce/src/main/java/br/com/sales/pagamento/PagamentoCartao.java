@@ -87,7 +87,7 @@ public class PagamentoCartao {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(carrinho.getPrecoTotal());
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
 
             Transaction transaction = new Transaction();
             transaction.setDescription("creating a direct payment with credit card");
