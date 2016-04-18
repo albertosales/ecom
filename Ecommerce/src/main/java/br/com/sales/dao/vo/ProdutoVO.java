@@ -15,7 +15,8 @@ import javax.persistence.Table;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
+/**@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
  *
  * @author MarcosAntonio
  */
@@ -32,12 +33,11 @@ public class ProdutoVO implements Serializable {
     private String path;
     //   cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.REFRESH})
+            cascade = {CascadeType.REFRESH})   
     private GrupoProduto grupo;
- //   private boolean promocao;
    
     public ProdutoVO() {
- //       promocao = false;
+       //promocao = false;
         grupo = new GrupoProduto();
     }
 
@@ -94,13 +94,13 @@ public class ProdutoVO implements Serializable {
         this.grupo = grupo;
     }
 
-/**     public boolean isPromocao() {
+    /* public boolean isPromocao() {
         return promocao;
     }
 
     public void setPromocao(boolean promocao) {
         this.promocao = promocao;
-    }  */
+    } */
     
     @Override
     public String toString() {
@@ -109,8 +109,8 @@ public class ProdutoVO implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + this.id;
+        int hash = 3;
+        hash = 23 * hash + this.id;
         return hash;
     }
 
@@ -131,5 +131,7 @@ public class ProdutoVO implements Serializable {
         }
         return true;
     }
+
+
 
 }
