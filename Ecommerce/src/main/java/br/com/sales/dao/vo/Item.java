@@ -15,16 +15,15 @@ public class Item implements Serializable {
     private ProdutoVO prod;
 //    private ProdutoPromocao prodProm;
     private int qtde;
-
- /*   public ProdutoPromocao getProdProm() {
+   
+    /*   public ProdutoPromocao getProdProm() {
         return prodProm;
     }
 
     public void setProdProm(ProdutoPromocao prodProm) {
         this.prodProm = prodProm;
     }   */
-    
-    
+
 
     public ProdutoVO getProd() {
         return prod;
@@ -41,6 +40,4 @@ public class Item implements Serializable {
     public void setQtde(int qtde) {
         this.qtde = qtde;
     }
-    
 }
-
