@@ -106,7 +106,12 @@ public class ProdutoService {
     public void persist(ProdutoVO entity) {
         this.grupo = br.com.sales.compra.DAO.GrupoProdutoVoDAO.getInstance().getById(grupoid);           //setId(grupoid);
         this.produtovo.setGrupo(grupo);
+        
         br.com.sales.compra.DAO.ProdutoVoDAO.getInstance().saveOrUpdate(produtovo);
+        this.arquivo.gravar();
+        this.produtovo = new ProdutoVO();
+        this.arquivo = new UploadArquivo();
+        this.listaProdutos = null;
     }
 
     public void update(ProdutoVO entity) {
@@ -118,7 +123,7 @@ public class ProdutoService {
     }
 
     public String preparaAlteracao(ProdutoVO entity) { 
-      return "/produto/administracao-de-produtos.xhtml";
+      return "/produto/cadastro-produto.xhtml";
     }
 
     public ProdutoVO findById(String id) {
@@ -143,7 +148,7 @@ public class ProdutoService {
     }
 
     public void uploadAction(FileUploadEvent event) {
-        this.arquivo.fileUpload(event, ".jpg", "resources/imagens/");
+        this.arquivo.fileUpload(event, ".jpg", "resources/images/");
         this.produtovo.setFoto(arquivo.getNome());
         this.produtovo.setPath(this.arquivo.getCaminho());
         FacesMessage message = new FacesMessage("Sucesso!!! ", event.getFile().getFileName() + " foi inserido.");
