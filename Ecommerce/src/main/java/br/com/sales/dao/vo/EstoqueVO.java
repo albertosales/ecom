@@ -5,7 +5,6 @@
  */
 package br.com.sales.dao.vo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ import javax.persistence.OneToOne;
  * @author Frede
  */
 @Entity
-public class Estoque {
+public class EstoqueVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

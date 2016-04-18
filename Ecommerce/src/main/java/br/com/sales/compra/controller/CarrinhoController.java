@@ -13,7 +13,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Leandro Klein
  */
-@ManagedBean
+@ManagedBean(name = "carrinho")
 @SessionScoped
 public class CarrinhoController {
     private Carrinho carrinho;

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+    <title>TSHOP - Bootstrap E-Commerce Parallax Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet"/>
+    <script>
+        paceOptions = {
+            elements: true
+        };
+    </script>
+
+    <script src="assets/js/pace.min.js"></script>
+</h:head>
+
+<body>
+
+    <!-- Include do Cabeçalho -->
+        <ui:include src="layout_header.xhtml" />
+        
+<!-- /.Fixed navbar  -->
+<div class="container main-container headerOffset">
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li class="active"> Checkout</li>
+            </ul>
+        </div>
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6 col-xxs-12 text-center-xs">
+            <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> Checkout</span></h1>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar col-xs-6 col-xxs-12 text-center-xs">
+            <h4 class="caps"><a href="category.html"><i class="fa fa-chevron-left"></i> Back to shopping </a></h4>
+        </div>
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="row userInfo">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="w100 clearfix">
+                        <ul class="orderStep orderStepLook2">
+                            <li class="active"><a href="checkout-1.html"> <i class="fa fa-map-marker "></i> <span> address</span>
+                            </a></li>
+                            <li><a href="checkout-2.html"> <i class="fa fa fa-envelope  "></i>
+                                <span> Billing </span></a></li>
+                            <li><a href="checkout-3.html"><i class="fa fa-truck "> </i><span>Shipping</span> </a></li>
+                            <li><a href="checkout-4.html"><i class="fa fa-money  "> </i><span>Payment</span> </a></li>
+                            <li><a href="checkout-5.html"><i class="fa fa-check-square "> </i><span>Order</span></a>
+                            </li>
+                        </ul>
+                        <!--/.orderStep end-->
+                    </div>
+
+
+                    <div class="w100 clearfix">
+                        <div class="row userInfo">
+                            <div class="col-lg-12">
+                                <h2 class="block-title-2"> Informe seus dados pessoais, e o endereço de entrega </h2>
+                            </div>
+
+                            <h:form>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group required">
+                                        <label for="InputName">Nome Completo<sup>*</sup> </label>
+                                        <input required="required" type="text" class="form-control" id="InputName"
+                                               placeholder="First Name"/>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label for="InputEmail">Email </label>
+                                        <input type="text" class="form-control" id="InputEmail" placeholder="Email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputCompany">Company </label>
+                                        <input type="text" class="form-control" id="InputCompany" placeholder="Company"/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="InputAddress">Address <sup>*</sup> </label>
+                                        <input required="required" type="text" class="form-control" id="InputAddress"
+                                               placeholder="Address"/>
+                                    </div>                                    
+                                    <div class="form-group required">
+                                        <label for="InputCity">City <sup>*</sup> </label>
+                                        <input required="required" type="text" class="form-control" id="InputCity"
+                                               placeholder="City"/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="InputState">State <sup>*</sup> </label>
+
+                                        <select class="form-control" required="required" aria-required="true" id="InputState"
+                                                name="InputState">
+                                            <option value="">Choose</option>
+                                            <option value="1">Alabama</option>
+                                            <option value="2">Alaska</option>
+                                            <option value="3">Arizona</option>
+                                            <option value="4">Arkansas</option>
+                                            <option value="5">California</option>
+                                            <option value="6">Colorado</option>
+                                            <option value="7">Connecticut</option>
+                                            <option value="8">Delaware</option>
+                                            <option value="53">District of Columbia</option>
+                                            <option value="9">Florida</option>
+                                            <option value="10">Georgia</option>
+                                            <option value="11">Hawaii</option>
+                                            <option value="12">Idaho</option>
+                                            <option value="13">Illinois</option>
+                                            <option value="14">Indiana</option>
+                                            <option value="15">Iowa</option>
+                                            <option value="16">Kansas</option>
+                                            <option value="17">Kentucky</option>
+                                            <option value="18">Louisiana</option>
+                                            <option value="19">Maine</option>
+                                            <option value="20">Maryland</option>
+                                            <option value="21">Massachusetts</option>
+                                            <option value="22">Michigan</option>
+                                            <option value="23">Minnesota</option>
+                                            <option value="24">Mississippi</option>
+                                            <option value="25">Missouri</option>
+                                            <option value="26">Montana</option>
+                                            <option value="27">Nebraska</option>
+                                            <option value="28">Nevada</option>
+                                            <option value="29">New Hampshire</option>
+                                            <option value="30">New Jersey</option>
+                                            <option value="31">New Mexico</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group required">
+                                        <label for="InputZip">Zip / Postal Code <sup>*</sup> </label>
+                                        <input required="required" type="text" class="form-control" id="InputZip"
+                                               placeholder="Zip / Postal Code"/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="InputCountry">Country <sup>*</sup> </label>
+                                        <select class="form-control" required="required" aria-required="true" id="InputCountry"
+                                                name="InputCountry">
+                                            <option value="">Choose</option>
+                                            <option value="38">Algeria</option>
+                                            <option value="39">American Samoa</option>
+                                            <option value="40">Andorra</option>
+                                            <option value="41">Angola</option>
+                                            <option value="42">Anguilla</option>
+                                            <option value="43">Antigua and Barbuda</option>
+                                            <option value="44">Argentina</option>
+                                            <option value="45">Armenia</option>
+                                            <option value="46">Aruba</option>
+                                            <option value="24">Australia</option>
+                                            <option value="2">Austria</option>
+                                            <option value="47">Azerbaijan</option>
+                                            <option value="48">Bahamas</option>
+                                            <option value="49">Bahrain</option>
+                                            <option value="50">Bangladesh</option>
+                                            <option value="3">Belgium</option>
+                                            <option value="34">Bolivia</option>
+                                            <option value="4">Canada</option>
+                                            <option value="5">China</option>
+                                            <option value="16">Czech Republic</option>
+                                            <option value="20">Denmark</option>
+                                            <option value="7">Finland</option>
+                                            <option value="8">France</option>
+                                            <option value="1">Germany</option>
+                                            <option value="9">Greece</option>
+                                            <option value="22">HongKong</option>
+                                            <option value="26">Ireland</option>
+                                            <option value="29">Israel</option>
+                                            <option value="10">Italy</option>
+                                            <option value="32">Ivory Coast</option>
+                                            <option value="11">Japan</option>
+                                            <option value="12">Luxemburg</option>
+                                            <option value="35">Mauritius</option>
+                                            <option value="13">Netherlands</option>
+                                            <option value="27">New Zealand</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputAdditionalInformation">Additional information</label>
+                                        <textarea rows="3" cols="26" name="InputAdditionalInformation"
+                                                  class="form-control" id="InputAdditionalInformation"></textarea>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="InputMobile">Mobile phone <sup>*</sup></label>
+                                        <input required="required" type="tel" name="InputMobile" class="form-control"
+                                               id="InputMobile"/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="addressAlias">Please assign an address title for future reference.
+                                            <sup>*</sup></label>
+                                        <input required="required" type="text" value="My address" name="addressAlias"
+                                               class="form-control" id="addressAlias"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                        <!--/row end-->
+
+                    </div>
+                    <div class="cartFooter w100">
+                        <div class="box-footer">
+                            <div class="pull-left"><a class="btn btn-default" href="index.html"> <i
+                                    class="fa fa-arrow-left"></i> Voltar as Compras </a></div>
+                            <div class="pull-right"><a class="btn btn-primary btn-small " href="checkout-3.xhtml">
+                                Entrega  <i class="fa fa-arrow-circle-right"></i> </a></div>
+                        </div>
+                    </div>
+                    <!--/ cartFooter -->
+
+                </div>
+            </div>
+            <!--/row end-->
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 rightSidebar">
+            <div class="w100 cartMiniTable">
+                <table id="cart-summary" class="std table">
+                    <tbody>
+                    <tr>
+                        <td>Valor Total dos Produtos</td>
+                        <td class="price">R$ #{carrinho.carrinho.precoTotal}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Valor Total</td>
+                        <td class=" site-color" id="total-price">R$ #{carrinho.carrinho.precoTotal}</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!--  /cartMiniTable-->
+
+        </div>
+        <!--/rightSidebar-->
+
+    </div>
+    <!--/row-->
+
+    <div style="clear:both"></div>
+</div>
+<!-- /.main-container-->
+<div class="gap"></div>
+
+<ui:include src="layout_footer.xhtml" />
+
+</body>
+</html>

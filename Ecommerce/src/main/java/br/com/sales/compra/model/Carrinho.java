@@ -6,40 +6,68 @@
 package br.com.sales.compra.model;
 
 import java.util.ArrayList;
-import br.com.sales.dao.vo.Produto;
+import br.com.sales.dao.vo.ItemProduto;
+import br.com.sales.dao.vo.ProdutoVO;
+import java.awt.event.ActionEvent;
+import java.util.Enumeration;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Request;
 
 /**
  *
  * @author Leandro Klein
  */
+public class Carrinho implements br.com.sales.interfaces.ICarrinho {
 
-public class Carrinho implements br.com.sales.interfaces.ICarrinho{
-    
-    private ArrayList<Produto> listaDeProdutos;
+    private ArrayList<ItemProduto> listaDeProdutos;
 
-    public ArrayList<Produto> getListaDeProdutos() {
+    public Carrinho() {
+        listaDeProdutos = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            ProdutoVO produto = new ProdutoVO();
+            produto.setFoto("images/product/a1.jpg");
+            produto.setId(i);
+            produto.setNome("Teste produto " + i);
+            produto.setPreco((i * 5));
+            ItemProduto item = new ItemProduto(i, produto);
+            listaDeProdutos.add(item);
+        }
+    }
+
+    public ArrayList<ItemProduto> getListaDeProdutos() {
         return listaDeProdutos;
     }
 
-    public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
+    public void setListaDeProdutos(ArrayList<ItemProduto> listaDeProdutos) {
         this.listaDeProdutos = listaDeProdutos;
     }
 
     @Override
-    public void adicionaAoCarrinho(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void adicionaAoCarrinho(ItemProduto itemProduto) {
+        listaDeProdutos.add(itemProduto); 
     }
 
-    public String getPrecoTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getQuantidade(Produto produto){
-        int qnt = 0;
-        for (Produto prod : listaDeProdutos) {
-            if(prod.getId() == produto.getId()){
-                qnt++;
+    public void removerDoCarrinho(int idProduto) {
+        for (int i = 0; i < listaDeProdutos.size(); i++) {
+            if (listaDeProdutos.get(i).getProduto().getId() == idProduto) {
+                listaDeProdutos.remove(listaDeProdutos.get(i));
+                --i;
             }
+        }
+    }
+      
+    public double getPrecoTotal() {
+        double precoTotal = 0.0;
+        for (ItemProduto produto : listaDeProdutos) {
+            precoTotal += (produto.getProduto().getPreco() * produto.getQuantidade());
+        }
+        return precoTotal;
+    }
+
+    public int getQuantidade() {
+        int qnt = 0;
+        for (ItemProduto produto : listaDeProdutos) {
+            qnt += produto.getQuantidade();
         }
         return qnt;
     }

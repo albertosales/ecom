@@ -7,40 +7,39 @@ package br.com.sales.compra.DAO;
 
 import java.util.Date;
 import java.util.List;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.EstoqueVO;
 
 /**
  *
  * @author Frede
  */
-public class EstoqueDAO extends DAO<Estoque> {
+public class EstoqueDAO extends DAO<EstoqueVO> {
 
     private static EstoqueDAO dao;
 
-    public EstoqueDAO(Class<Estoque> classe) {
+    public EstoqueDAO(Class<EstoqueVO> classe) {
         super(classe);
     }
 
     public static EstoqueDAO getInstance() {
         if (dao == null) {
-            dao = new EstoqueDAO(Estoque.class);
+            dao = new EstoqueDAO(EstoqueVO.class);
         }
         return dao;
     }
 
-    public List<Estoque> getEstoquePorPeriodo(Date inicio, Date fim) {
-        String hql = "";
-
-        return null;
+    public long getEstoquePorPeriodo(Date inicio, Date fim, int produtoId) {
+        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM EstoqueVO WHERE produto_id = :produtoId AND (data >= :inicio AND data <= :fim)";
+        return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).setDate("inicio", inicio).setDate("fim", fim).uniqueResult();
     }
 
     public long getEstoqueAtual(int produtoId) {
-        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM Estoque WHERE produto_id = :produtoId";
+        String hql = "SELECT (SUM(compra)-SUM(venda)) FROM EstoqueVO WHERE produto_id = :produtoId";
         return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).uniqueResult();
     }
 
-    public void saveAll(List<Estoque> estoques){
-        for (Estoque estoque : estoques) {
+    public void saveAll(List<EstoqueVO> estoques){
+        for (EstoqueVO estoque : estoques) {
             getInstance().save(estoque);
         }
     }

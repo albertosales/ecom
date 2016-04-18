@@ -28,8 +28,8 @@ import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import br.com.sales.dao.vo.Cliente;
-import br.com.sales.dao.vo.Produto;
-import br.com.sales.dao.vo.Estoque;
+import br.com.sales.dao.vo.EstoqueVO;
+import br.com.sales.dao.vo.ItemProduto;
 
 /**
  *
@@ -40,7 +40,7 @@ import br.com.sales.dao.vo.Estoque;
 public class PagamentoCartao {
 
     private String accessToken;
-    private List<Estoque> listaEstoque;
+    private List<EstoqueVO> listaEstoque;
 
     public void pagar(Cliente cliente, Carrinho carrinho) {
         try {
@@ -69,11 +69,11 @@ public class PagamentoCartao {
 
             listaEstoque = new ArrayList<>();
             Date data = new Date();
-            for (Produto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getNome(), String.valueOf(carrinho.getQuantidade(produto)), String.valueOf(produto.getPreco()), "BRL"));
-                Estoque estoque = new Estoque();
-                estoque.setProduto(produto);
-                estoque.setVenda(carrinho.getQuantidade(produto));
+            for (ItemProduto produto : carrinho.getListaDeProdutos()) {
+                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()), "BRL"));
+                EstoqueVO estoque = new EstoqueVO();
+                estoque.setProduto(produto.getProduto());
+                estoque.setVenda(produto.getQuantidade());
                 estoque.setData(data);
                 listaEstoque.add(estoque);
             }
@@ -87,7 +87,7 @@ public class PagamentoCartao {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(carrinho.getPrecoTotal());
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
 
             Transaction transaction = new Transaction();
             transaction.setDescription("creating a direct payment with credit card");
