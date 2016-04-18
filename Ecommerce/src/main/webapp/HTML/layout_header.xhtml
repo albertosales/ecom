@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>TSHOP - Bootstrap E-Commerce Parallax Theme</title>
     </h:head>
@@ -161,7 +162,7 @@
                             class="icon-bar"> </span> <span class="icon-bar"> </span></button>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i
                             class="fa fa-shopping-cart colorWhite"> </i> <span
-                            class="cartRespons colorWhite"> Carrinho (R$ 210,00) </span></button>
+                            class="cartRespons colorWhite"> Carrinho (R$ #{carrinho.carrinho.precoTotal}) </span></button>
                     <a class="navbar-brand " href="index.html"> <img src="images/logo.png" alt="TSHOP" /> </a>
 
                     <!-- this part for mobile -->
@@ -180,118 +181,35 @@
                         <div class="w100 miniCartTable scroll-pane">
                             <table>
                                 <tbody>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
+                                    <ui:repeat value="#{carrinho.carrinho.listaDeProdutos}" var="item">
+                                        <tr class="miniCartProduct">
+                                            <td style="width:20%" class="miniCartProductThumb">
+                                                <div><a href="product-details.html"> <img src="#{item.produto.foto}" alt="img" /> </a>
+                                                </div>
+                                            </td>
+                                            <td style="width:40%">
+                                                <div class="miniCartDescription">
+                                                    <h4><a href="product-details.html">#{item.produto.nome}</a></h4>
+                                                    <span class="size"> 12 x 1.5 L </span>
 
-                                                <div class="price"><span> $8.80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/2.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
-
-                                                <div class="price"><span> R$ 8,80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/5.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
-
-                                                <div class="price"><span> R$ 8,80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
-
-                                                <div class="price"><span> R$ 8,80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
-
-                                                <div class="price"><span> R$ 8,80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
-                                    <tr class="miniCartProduct">
-                                        <td style="width:20%" class="miniCartProductThumb">
-                                            <div><a href="product-details.html"> <img src="images/product/4.jpg" alt="img" /> </a>
-                                            </div>
-                                        </td>
-                                        <td style="width:40%">
-                                            <div class="miniCartDescription">
-                                                <h4><a href="product-details.html"> TSHOP T camiseta Preta </a></h4>
-                                                <span class="size"> 12 x 1.5 L </span>
-
-                                                <div class="price"><span> R$ 8,80 </span></div>
-                                            </div>
-                                        </td>
-                                        <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                        <td style="width:15%" class="miniCartSubtotal"><span> R$ 8,80 </span></td>
-                                        <td style="width:5%" class="delete"><a> x </a></td>
-                                    </tr>
+                                                    <div class="price"><span>R$ #{item.produto.preco}</span></div>
+                                                </div>
+                                            </td>
+                                            <td style="width:10%" class="miniCartQuantity"><a> X #{item.quantidade} </a></td>
+                                            <td style="width:15%" class="miniCartSubtotal"><span>R$ #{item.produto.preco * item.quantidade}</span></td>
+                                            <td style="width:5%" class="delete"><a> x </a></td>
+                                        </tr>
+                                    </ui:repeat>
                                 </tbody>
                             </table>
                         </div>
                         <!--/.miniCartTable-->
 
                         <div class="miniCartFooter  miniCartFooterInMobile text-right">
-                            <h3 class="text-right subtotal"> Subtotal: $210 </h3>
+                            <h3 class="text-right subtotal"> Subtotal: R$ #{carrinho.carrinho.precoTotal} </h3>
                             <a href="cart.html" class="btn btn-sm btn-danger"> <i class="fa fa-shopping-cart"> </i> VER CARRINHO
-                            </a> <a href="checkout-0.html"
-                                    class="btn btn-sm btn-primary"> CONFERIR </a></div>
+                            </a> <a href="checkout-1.xtml"
+                                    class="btn btn-sm btn-primary"> Finalizar Compra </a></div>
                         <!--/.miniCartFooter-->
 
                     </div>
@@ -405,124 +323,40 @@
                     <!--- this part will be hidden for mobile version -->
                     <div class="nav navbar-nav navbar-right hidden-xs">
                         <div class="dropdown  cartMenu "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
-                                    class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Carrinho (R$ 210,00) </span> <b
+                                    class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Carrinho (R$ #{carrinho.carrinho.precoTotal}) </span> <b
                                     class="caret"> </b> </a>
 
                             <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
                                 <div class="w100 miniCartTable scroll-pane">
                                     <table>
                                         <tbody>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img" />
-                                                        </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> TSHOP Tshirt DO9 </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
+                                            <ui:repeat value="#{carrinho.carrinho.listaDeProdutos}" var="item">
+                                                <tr class="miniCartProduct">
+                                                    <td style="width:20%" class="miniCartProductThumb">
+                                                        <div><a href="product-details.html"> <img src="#{item.produto.foto}" alt="img" /> </a>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:40%">
+                                                        <div class="miniCartDescription">
+                                                            <h4><a href="product-details.html">#{item.produto.nome}</a></h4>
 
-                                                        <div class="price"><span> $22 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $33 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/product/2.jpg" alt="img" />
-                                                        </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> TShir TSHOP 09 </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
+                                                            <div class="price"><span>R$ #{item.produto.preco}</span></div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:10%" class="miniCartQuantity"><a> X #{item.quantidade} </a></td>
+                                                    <td style="width:15%" class="miniCartSubtotal"><span>R$ #{item.produto.preco * item.quantidade}</span></td>
+                                                </tr>
+                                            </ui:repeat>
 
-                                                        <div class="price"><span> $15 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $120 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/product/5.jpg" alt="img" />
-                                                        </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> Tshir 2014 </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
-
-                                                        <div class="price"><span> $30 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $80 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img" />
-                                                        </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> TSHOP T shirt DO20 </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
-
-                                                        <div class="price"><span> $15 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $55 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/product/4.jpg" alt="img" />
-                                                        </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> T shirt Black </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
-
-                                                        <div class="price"><span> $44 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $40 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
-                                            <tr class="miniCartProduct">
-                                                <td style="width:20%" class="miniCartProductThumb">
-                                                    <div><a href="product-details.html"> <img src="images/site/winter.jpg"
-                                                                                              alt="img" /> </a></div>
-                                                </td>
-                                                <td style="width:40%">
-                                                    <div class="miniCartDescription">
-                                                        <h4><a href="product-details.html"> G Star T shirt </a></h4>
-                                                        <span class="size"> 12 x 1.5 L </span>
-
-                                                        <div class="price"><span> $80 </span></div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                                <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                                                <td style="width:5%" class="delete"><a> x </a></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!--/.miniCartTable-->
 
                                 <div class="miniCartFooter text-right">
-                                    <h3 class="text-right subtotal"> Subtotal: $210 </h3>
-                                    <a href="cart.html" class="btn btn-sm btn-danger"> <i class="fa fa-shopping-cart"> </i> VER CARRINHO </a> <a
-                                        class="btn btn-sm btn-primary"> CONFERIR </a></div>
+                                    <h3 class="text-right subtotal"> Subtotal: R$ #{carrinho.carrinho.precoTotal} </h3>
+                                    <a href="cart.xhtml" class="btn btn-sm btn-danger"> <i class="fa fa-shopping-cart"> </i> VER CARRINHO </a> 
+                                    <a href="checkout-1.xhtml" class="btn btn-sm btn-primary"> Finalizar Compra </a></div>
                                 <!--/.miniCartFooter-->
 
                             </div>
