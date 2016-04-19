@@ -41,8 +41,6 @@ public class ProdutoService {
     public ProdutoService() {
         produtovo = new ProdutoVO();
         grupo = new GrupoProduto();
-        //       produtodao = new ProdutoVoDAO();
-//        grupodao = new GrupoProdutoVoDAO();
     }
 
     public ProdutoVO getProdutovo() {

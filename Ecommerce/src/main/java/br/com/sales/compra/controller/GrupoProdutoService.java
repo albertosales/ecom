@@ -65,13 +65,6 @@ public class GrupoProdutoService {
         return listaGrupos;
     }
 
-    /*    public List<GrupoProduto> findAll() {
-        //    grupodao.
-        //  br.com.sales.compra.DAO.GrupoProdutoVoDAO.getInstance().getAll();
-        List<GrupoProduto> grupos = grupodao.getAll();
-        //    grupodao.closeCurrentSession();
-        return grupos;
-    }  */
     public void deleteAll() {
         
     }

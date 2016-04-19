@@ -24,5 +24,6 @@
     <mapping class="br.com.sales.dao.vo.Item"/>
     <mapping class="br.com.sales.dao.vo.NotaFiscalCompra"/>
     <mapping class="br.com.sales.dao.vo.ItemCompra"/>
+    <mapping class="br.com.sales.dao.vo.Usuario"/>
   </session-factory>
 </hibernate-configuration>

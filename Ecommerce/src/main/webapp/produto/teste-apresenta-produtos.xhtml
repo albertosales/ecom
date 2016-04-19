@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../resources/css/cssLayout.css"/>
+        <link rel="stylesheet" href="../resources/css/default.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Produtos Cadastrados-Shop-Online">
+                <p:outputPanel id="Produtos">
+
+                    <table>
+                        <c:forEach items="${produtoService.listaProdutos}" var="produto" varStatus="i" step="${4}">  
+                            <tr>
+
+                                <c:forEach begin="${1}" end="${4}" var="j">  
+                                    <td>     
+                                        <c:if test="${produtoService.listaProdutos[i.index+j].id != null}"> <br />
+                                            <h:graphicImage library="/resources/images/product"
+                                                            name ="${produtoService.listaProdutos[i.index+j].foto}"
+                                                            width="150px"
+                                                            height="150px"/> <br/>                                              
+                                            ${produtoService.listaProdutos[i.index+j].nome} <br/>
+                                            ${produtoService.listaProdutos[i.index+j].preco} <br/>
+                                            <h:commandButton value="Comprar"/>
+                                                          <!--   action="#{carrinhoBean.adicionaCarrinho(produtoBean.listaProdutos[i.index+j])}"  -->
+                                        </c:if>
+                                    </td>                                                                                                                                     
+                                </c:forEach> 
+
+                            </tr>                     
+                        </c:forEach> 
+                    </table>
+                </p:outputPanel>    
+            </p:panel>
+
+        </h:form> 
+    </h:body>
+</html>

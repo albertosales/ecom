@@ -6,6 +6,7 @@
 package br.com.sales.compra.DAO;
 
 import br.com.sales.dao.vo.ItemCompra;
+import java.util.List;
 
 /**
  *
@@ -24,4 +25,10 @@ public class ItemCompraDAO extends DAO<ItemCompra>{
         }
         return dao;
     }
+    
+    public List<ItemCompra> getListaItensCompra(int id) {
+        String hql = "FROM ItemCompra";   // WHERE id= :id";
+        return getInstance().getSession().createQuery(hql).list();
+    }
+    
 }

@@ -76,6 +76,7 @@ public class NotaFiscalCompraService {
     }
     
     public List<ItemCompra> getListaItensNota() {
+        this.listaItensNota = br.com.sales.compra.DAO.ItemCompraDAO.getInstance().getListaItensCompra(notaFiscalid);
         return listaItensNota;
     }
     
@@ -103,6 +104,10 @@ public class NotaFiscalCompraService {
         br.com.sales.compra.DAO.ItemCompraDAO.getInstance().save(itemCompra);
         this.itemCompra = new ItemCompra();
         this.listaItens = null;
+    }
+    
+    public void getIdNota(){
+        
     }
     
     public void update(NotaFiscalCompra Entity) {
