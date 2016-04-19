@@ -35,7 +35,8 @@ public class EstoqueDAO extends DAO<EstoqueVO> {
 
     public long getEstoqueAtual(int produtoId) {
         String hql = "SELECT (SUM(compra)-SUM(venda)) FROM EstoqueVO WHERE produto_id = :produtoId";
-        return (long) getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).uniqueResult();
+        Object estoque =  getInstance().getSession().createQuery(hql).setInteger("produtoId", produtoId).uniqueResult();
+        return estoque != null ? (Long) estoque : 0;
     }
 
     public void saveAll(List<EstoqueVO> estoques){
