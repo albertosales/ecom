@@ -5,12 +5,12 @@
  */
 package br.com.sales.interfaces;
 
-import br.com.sales.dao.vo.ItemProduto;
+import br.com.sales.dao.vo.ProdutoVO;
 
 /**
  *
  * @author Leandro Klein
  */
 public interface ICarrinho {
-    void adicionaAoCarrinho(ItemProduto itemProduto);
+    void adicionaAoCarrinho(ProdutoVO produto);
 }

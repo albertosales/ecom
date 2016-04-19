@@ -43,7 +43,8 @@ public class Carrinho implements br.com.sales.interfaces.ICarrinho {
     }
 
     @Override
-    public void adicionaAoCarrinho(ItemProduto itemProduto) {
+    public void adicionaAoCarrinho(ProdutoVO produto) {
+        ItemProduto itemProduto = new ItemProduto(1, produto);
         listaDeProdutos.add(itemProduto); 
     }
 
