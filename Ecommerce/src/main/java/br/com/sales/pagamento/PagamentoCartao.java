@@ -70,7 +70,7 @@ public class PagamentoCartao {
             listaEstoque = new ArrayList<>();
             Date data = new Date();
             for (ItemProduto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()), "BRL"));
+                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()).concat("0"), "USD"));
                 EstoqueVO estoque = new EstoqueVO();
                 estoque.setProduto(produto.getProduto());
                 estoque.setVenda(produto.getQuantidade());
@@ -86,8 +86,8 @@ public class PagamentoCartao {
             payer.setPaymentMethod("credit_card");
 
             Amount amount = new Amount();
-            amount.setCurrency("BRL");
-            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
+            amount.setCurrency("USD");
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()).concat("0"));
 
             Transaction transaction = new Transaction();
             transaction.setDescription("creating a direct payment with credit card");

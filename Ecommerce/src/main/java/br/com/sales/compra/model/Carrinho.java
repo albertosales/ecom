@@ -23,7 +23,7 @@ public class Carrinho implements br.com.sales.interfaces.ICarrinho {
 
     public Carrinho() {
         listaDeProdutos = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             ProdutoVO produto = new ProdutoVO();
             produto.setFoto("images/product/a1.jpg");
             produto.setId(i);

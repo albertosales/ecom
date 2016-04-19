@@ -68,7 +68,7 @@ public class PagamentoPaypal {
 
             Date data = new Date();
             for (ItemProduto produto : carrinho.getListaDeProdutos()) {
-                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()), "BRL"));
+                items.add(new Item(produto.getProduto().getNome(), String.valueOf(produto.getQuantidade()), String.valueOf(produto.getProduto().getPreco()).concat("0"), "BRL"));
                 EstoqueVO estoque = new EstoqueVO();
                 estoque.setProduto(produto.getProduto());
                 estoque.setVenda(produto.getQuantidade());
@@ -81,7 +81,7 @@ public class PagamentoPaypal {
 
             Amount amount = new Amount();
             amount.setCurrency("BRL");
-            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()));
+            amount.setTotal(String.valueOf(carrinho.getPrecoTotal()).concat("0"));
 
             Transaction transaction = new Transaction();
             transaction.setItemList(list);
@@ -96,8 +96,8 @@ public class PagamentoPaypal {
             payment.setTransactions(transactions);
 
             RedirectUrls redirectUrls = new RedirectUrls();
-            redirectUrls.setReturnUrl("http://localhost:8084/Ecommerce/HTML/checkout-0.xhtml");
-            redirectUrls.setCancelUrl("http://localhost:8084/Ecommerce/HTML/checkout-0.xhtml");
+            redirectUrls.setReturnUrl("http://localhost:8084/Ecommerce/HTML/checkout-4.xhtml");
+            redirectUrls.setCancelUrl("http://localhost:8084/Ecommerce/HTML/checkout-4.xhtml");
             payment.setRedirectUrls(redirectUrls);
 
             Payment createdPayment = payment.create(apiContext);

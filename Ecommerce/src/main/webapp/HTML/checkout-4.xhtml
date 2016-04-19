@@ -74,6 +74,7 @@
                     <div class="w100 clearfix">
                         <h:form id="formm" >
                         <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento paypal" action="#{pagamentoPaypal.pagar(cliente.cliente, carrinho.carrinho)}"/>
+                        <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Pagamento Cartão (USD)" action="#{pagamentoCartao.pagar(cliente.cliente, carrinho.carrinho)}"/>
                         <h:commandButton class="btn  btn-block btn-lg btn-primary" value="Gerar Boleto" action="#{geraBoleto.gerarBoleto()}"/>
                         <h:outputLabel class="block-title-2" value="#{pagamentoPaypal.resultado}" />
                         <f:metadata>
