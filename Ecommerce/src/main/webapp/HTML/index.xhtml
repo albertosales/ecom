@@ -218,6 +218,7 @@
 
 <ui:repeat value="#{produtoService.listaProdutos}" var="prod">
                 <div class="item itemauto col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <h:form id="formm" >
                     <div class="product">
                         <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
                            data-placement="left">
@@ -259,10 +260,10 @@
                             
                             <span class="size">P / M / G </span></div>
                         <div class="price"><span>R$#{prod.preco}</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Adicionar ao Carrinho </span> </a></div>
+                        <div class="action-control"><h:commandButton action="#{carrinho.carrinho.adicionaAoCarrinho(prod)}" class="btn btn-primary"> <span class="add2cart"><i
+                                        class="glyphicon glyphicon-shopping-cart"> </i> Adicionar ao Carrinho </span> </h:commandButton></div>
                     </div>
-                    
+                    </h:form>
                 </div>
     </ui:repeat>           
                 </div>
