@@ -776,112 +776,212 @@ and open the template in the editor.
                                         <h:outputLabel value="#{notaFiscalCompraService.notaFiscalCompra.numNotaFiscal}"/>
                                     </div>
 
-                                    <!--Adicionando itens a nota fiscal  -->
-                                    <h:form acceptcharset="ISO-8859-1">
-                                        <p:dataTable value="#{notaFiscalCompraService.listaItens}" sortMode="multiple" rows="25" paginator="true"
-                                                     var="itemCompra">
-                                            <f:facet name="header">
-                                                <h:outputText value="Compras"/>
-                                            </f:facet>
+                                    <div>
+                                        <h:outputLabel value="ID da Nota Fiscal: " for="id"/>
+                                        <h:outputLabel value="#{notaFiscalCompraService.notaFiscalid}"/>
+                                    </div>
 
-                                            <p:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Código" />
-                                                </f:facet>
-                                                <h:outputText value="#{itemCompra.id}"/>
-                                            </p:column>
+                                    <div>
+                                        <h:outputLabel value="ID do Produto: " for="id"/>
+                                        <h:outputLabel value="#{notaFiscalCompraService.produtoid}"/>
+                                    </div>
 
-                                            <p:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Descrição do Produto" />
-                                                </f:facet>
-                                                <h:outputText value="#{itemCompra.descricaoProduto}"/>
-                                            </p:column>
+                                    <div>
+                                        <h:outputLabel value="Nome do Produto: " for="nome"/>
+                                        <h:outputLabel value="#{notaFiscalCompraService.descProd}"/>
+                                    </div>
 
-                                            <p:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Quantidade" />
-                                                </f:facet>
-                                                <h:outputText value="#{itemCompra.quant}"/>
-                                            </p:column>
+                                </p:panel>
+                            </h:form>
 
-                                            <p:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Valor Unitario" />
-                                                </f:facet>
-                                                <h:outputText value="#{itemCompra.valorUnitario}"/>
-                                            </p:column>
+                            <!--Listando Produtos para Compra  -->
 
-                                        </p:dataTable>    
-                                    </h:form>
+                            <h:form>
+                                <p:panel>  
+
+                                    <div class="container">
+                                        <div class="row">
+
+                                            <div class=" col-lg-8">
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="collapseWill">
+                                                                Itens da Nota Fiscal <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
+                                                    </div>
 
 
-                                    <h:form acceptcharset="ISO-8859-1" enctype="multipart/form-data" >
-                                        <div id="collapse2" class="panel-collapse collapse in">
-                                            <div class="panel-body">
 
-                                                <fieldset>
+                                                    <h:form acceptcharset="ISO-8859-1">
+                                                        <p:dataTable value="#{notaFiscalCompraService.listaItensNota}" sortMode="multiple" rows="25" paginator="true"
+                                                                     id="listaItensNota"
+                                                                     var="itemCompra">
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Itens da NF"/>
+                                                            </f:facet>
 
-                                                    <!-- Form Name -->
-                                                    <legend>Adicionar Itens</legend>
+                                                            
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Nome" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{itemCompra.descricaoProduto}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Quant" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{itemCompra.quant}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Preço" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{itemCompra.valorUnitario}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Nº Nota Fiscal" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{itemCompra.notaFiscalCompra.numNotaFiscal}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="ID Nota Fiscal" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{itemCompra.notaFiscalCompra.id}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <p:button href="/produto/cadastro-produto.xhtml" icon="ui-icon-plus" value="NOVO"/>
+
+                                                                </f:facet>
+                                                                <p:commandButton
+                                                                    action="#{notaFiscalCompraService.persistItem(Entity)}" 
+                                                                    value="COMPRAR"
+                                                                    ajax="false">
 
 
-                                                    <!-- Inicio Formulario Cadastro de Itens -->
-                                                    <h:form acceptcharset="ISO-8859-1" enctype="multipart/form-data" >
-                                                        <p:messages id="messages" closable="true"/>
-                                                        <h:inputHidden value="#{notaFiscalCompraService.notaFiscalCompra.id}"/>
 
-                                                        <p:panel>
-                                                            <h:panelGrid columns="2">
-                                                                <h:outputLabel value="Descrição do Produto" for="descricaoProduto"/>
-                                                                <p:inputText id="descricaoProduto" size="30"
-                                                                             value="#{notaFiscalCompraService.itemCompra.descricaoProduto}"
-                                                                             required="true"
-                                                                             requiredMessage="É necessário informar o nome do produto."/>
+                                                                </p:commandButton>
+                                                            </p:column>
 
-                                                                <h:outputLabel value="Quantidade: " for="qtde"/>
-                                                                <p:inputText id="qtde" size="50"
-                                                                             value="#{notaFiscalCompraService.itemCompra.quant}"
-                                                                             required="true"
-                                                                             requiredMessage="É necessário informar a quantidade de produtos."/>
 
-                                                                <h:outputLabel value="Valor Unitario: " for="valorUnitario"/>
-                                                                <p:inputText id="valorUnitario" size="50"
-                                                                             value="#{notaFiscalCompraService.itemCompra.valorUnitario}"
-                                                                             required="true"
-                                                                             requiredMessage="É necessário informar o nome do fornecedor."/>
-                                                                <h:outputLabel value="Nº NF: " for="numNotaFiscal"/>
-                                                                <h:outputLabel value="#{notaFiscalCompraService.notaFiscalCompra.fornecedor}" />
 
-                                                                <h:outputLabel value="id: " for="id"/>
-
-                                                                <h:selectOneMenu id="grupo" value="#{notaFiscalCompraService.notaFiscalid}">  
-                                                                    <f:selectItem itemLabel="Selecione" 
-                                                                                  noSelectionOption="true" />  
-                                                                    <f:selectItems value="#{notaFiscalCompraService.listaNotaFiscalCompra}" var="grupo" 
-                                                                                   itemLabel="#{grupo.fornecedor}" 
-                                                                                   itemValue="#{grupo.id}"/>  
-                                                                </h:selectOneMenu> 
-
-                                                            </h:panelGrid>
-
-                                                            <p:panel> 
-                                                                <p:commandButton ajax="false"
-                                                                                 value="Salvar"
-                                                                                 action="#{notaFiscalCompraService.persistItem(Entity)}"/>
-                                                                <p:commandButton value="Cancelar"
-                                                                                 type="reset"/>
-                                                            </p:panel>
-
-                                                        </p:panel>
+                                                        </p:dataTable>    
                                                     </h:form>
-                                                    <p:button href="/produto/administracao-de-produtos.xhtml" value="Tabela de Produtos"/>
-                                                </fieldset>
+
+                                                    <div>
+                                                        <h:outputLabel value="ID do Produto: " for="id"/>
+                                                        <h:outputLabel value="#{produtoService.produtovo.id}"/>
+                                                    </div>
+
+                                                    <div>
+                                                        <h:outputLabel value="Nome do Produto: " for="nome"/>
+                                                        <h:outputLabel value="#{notaFiscalCompraService.descProd}"/>
+                                                    </div>
+
+
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </h:form>
+                                    </div><!-- /main container -->
 
 
+                                    <div class="container">
+                                        <div class="row">
+
+                                            <div class=" col-lg-8">
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="collapseWill">
+                                                                Apresentação de Produtos <span class="pull-left"> <i class="fa fa-caret-right"></i></span> </a></h4>
+                                                    </div>
+
+
+
+                                                    <h:form acceptcharset="ISO-8859-1" id="listaProdutos">
+                                                        <p:dataTable value="#{produtoService.listaProdutos}" sortMode="multiple" rows="25" paginator="true"
+                                                                     var="produtovo">
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Produtos"/>
+                                                            </f:facet>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Código" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{produtovo.id}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Nome" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{produtovo.nome}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Foto" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{produtovo.foto}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Preço" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{produtovo.preco}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Grupo" />
+                                                                </f:facet>
+                                                                <h:outputText value="#{produtovo.grupo.nome}"/>
+                                                            </p:column>
+
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <p:button href="/produto/cadastro-produto.xhtml" icon="ui-icon-plus" value="NOVO"/>
+
+                                                                </f:facet>
+                                                                <p:commandButton 
+                                                                    
+                                                                    <p:commandButton value="Adicionar" ajax="false" 
+                                                                                     action="#{notaFiscalCompraService.persistItem(Entity)}" 
+                                                                                     id="btnLogin"  
+                                                                                     update="growl">
+                                                                    </p:commandButton>
+                                                                    
+                                                              
+
+
+                                                                
+                                                            </p:column>
+
+
+
+                                                        </p:dataTable>    
+                                                    </h:form>
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /main container -->
 
 
                                 </p:panel>

@@ -29,8 +29,14 @@ public class NotaFiscalCompra implements Serializable {
     private String fornecedor;
     private int itemid;
     
+    
     public NotaFiscalCompra(){
     }
+
+    public NotaFiscalCompra(int id) {
+        this.id = id;
+    }
+    
 
     public int getItemid() {
         return itemid;

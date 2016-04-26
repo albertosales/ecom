@@ -6,6 +6,8 @@
 package br.com.sales.compra.DAO;
 
 import br.com.sales.dao.vo.NotaFiscalCompra;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 
 /**
  *

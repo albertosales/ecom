@@ -5,6 +5,7 @@
  */
 package br.com.sales.compra.DAO;
 
+import br.com.sales.dao.vo.ItemCompra;
 import br.com.sales.dao.vo.ProdutoVO;
 
 /**
@@ -25,4 +26,10 @@ public class ProdutoVoDAO extends DAO<ProdutoVO>{
         return dao;
     }
 
+    public Object getIdProdVO(String descProd) {
+        String hql = "FROM produtovo where nome= :descProd";
+        
+        return getInstance().getSession().createQuery(hql).uniqueResult();
+    }
+    
 }

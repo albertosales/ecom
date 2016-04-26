@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -33,14 +35,28 @@ public class ItemCompra implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.REFRESH})
     private NotaFiscalCompra notaFiscalCompra;
-
+    @OneToOne
+    private ProdutoVO produtovo;
+    
     public ItemCompra() {
         notaFiscalCompra = new NotaFiscalCompra();
+       
     }
+    
+    
 
     public NotaFiscalCompra getNotaFiscalCompra() {
         return notaFiscalCompra;
     }
+
+    public ProdutoVO getProdutovo() {
+        return produtovo;
+    }
+
+    public void setProdutovo(ProdutoVO produtovo) {
+        this.produtovo = produtovo;
+    }
+    
 
     public void setNotaFiscalCompra(NotaFiscalCompra notaFiscalCompra) {
         this.notaFiscalCompra = notaFiscalCompra;
@@ -118,5 +134,5 @@ public class ItemCompra implements Serializable{
         }
         return true;
     }
-    
+
 }

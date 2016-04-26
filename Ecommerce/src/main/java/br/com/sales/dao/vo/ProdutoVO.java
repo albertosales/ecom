@@ -35,11 +35,18 @@ public class ProdutoVO implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.REFRESH})   
     private GrupoProduto grupo;
+    
    
     public ProdutoVO() {
        //promocao = false;
         grupo = new GrupoProduto();
     }
+
+    public ProdutoVO(String nome) {
+        this.nome = nome;
+    }
+    
+    
 
     public ProdutoVO(String nome, String foto) {
         this.nome = nome;
