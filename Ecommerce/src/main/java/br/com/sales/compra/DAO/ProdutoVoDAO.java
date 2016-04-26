@@ -7,6 +7,7 @@ package br.com.sales.compra.DAO;
 
 import br.com.sales.dao.vo.ItemCompra;
 import br.com.sales.dao.vo.ProdutoVO;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -29,7 +30,8 @@ public class ProdutoVoDAO extends DAO<ProdutoVO>{
     public Object getIdProdVO(String descProd) {
         String hql = "FROM produtovo where nome= :descProd";
         
-        return getInstance().getSession().createQuery(hql).uniqueResult();
+         return FacesContext.getCurrentInstance().getAttributes().put(hql, hql);
     }
+     
     
 }
