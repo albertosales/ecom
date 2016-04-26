@@ -771,8 +771,8 @@ and open the template in the editor.
                                                     <c:forEach begin="${0}" end="${3}" var="j">  
                                                         <td>     
                                                             <c:if test="#{produtoService.listaProdutos[i.index+j].id != null}"> <br />
-                                                                <h:graphicImage library ="images/product"
-                                                                                name ="${produtoService.listaProdutos[i.index+j].foto}"
+                                                                <h:graphicImage library =""
+                                                                                name ="images/product/${produtoService.listaProdutos[i.index+j].foto}"
                                                                                 width="150px"
                                                                                 height="150px"/> <br/>                                              
                                                                 ${produtoService.listaProdutos[i.index+j].nome} <br/>

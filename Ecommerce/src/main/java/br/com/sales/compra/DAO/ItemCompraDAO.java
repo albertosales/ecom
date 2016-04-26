@@ -5,6 +5,7 @@
  */
 package br.com.sales.compra.DAO;
 
+import br.com.sales.compra.model.HibernateUtil;
 import br.com.sales.dao.vo.ItemCompra;
 import java.util.List;
 
@@ -12,23 +13,30 @@ import java.util.List;
  *
  * @author MarcosAntonio
  */
-public class ItemCompraDAO extends DAO<ItemCompra>{
+public class ItemCompraDAO extends DAO<ItemCompra> {
+
     private static ItemCompraDAO dao;
-    
+
     public ItemCompraDAO(Class<ItemCompra> classe) {
         super(classe);
     }
-    
+
     public static ItemCompraDAO getInstance() {
-        if(dao == null) {
+        if (dao == null) {
             dao = new ItemCompraDAO(ItemCompra.class);
         }
         return dao;
     }
-    
+
     public List<ItemCompra> getListaItensCompra(int id) {
-        String hql = "FROM ItemCompra";   // WHERE id= :id";
+        String hql = "FROM ItemCompra";      // WHERE notaFiscalCompra.numNotaFiscal= :id ";
         return getInstance().getSession().createQuery(hql).list();
     }
-    
+
+    public Object getProdutovo() {
+        String hql = "INSERT INTO ecom.ItemCompra (descricaoProduto, valorUnitario)\n"
+                + "SELECT nome, preco FROM ecom.produtovo";
+        
+        return getInstance().getSession().createSQLQuery(hql).uniqueResult();
+    }
 }

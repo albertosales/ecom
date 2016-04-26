@@ -9,6 +9,7 @@ import br.com.sales.compra.DAO.GrupoProdutoVoDAO;
 import br.com.sales.compra.DAO.ProdutoVoDAO;
 import br.com.sales.compra.model.UploadArquivo;
 import br.com.sales.dao.vo.GrupoProduto;
+import br.com.sales.dao.vo.ItemCompra;
 import br.com.sales.dao.vo.ProdutoVO;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -31,6 +32,8 @@ public class ProdutoService {
     private int grupoid;
     private GrupoProduto grupo;
     String grpoIid;
+    
+    private ItemCompra itemCompra;
 
     private UploadArquivo arquivo = new UploadArquivo();
     private UploadedFile file;
@@ -41,6 +44,15 @@ public class ProdutoService {
     public ProdutoService() {
         produtovo = new ProdutoVO();
         grupo = new GrupoProduto();
+        itemCompra = new ItemCompra();
+    }
+
+    public ItemCompra getItemCompra() {
+        return itemCompra;
+    }
+
+    public void setItemCompra(ItemCompra itemCompra) {
+        this.itemCompra = itemCompra;
     }
 
     public ProdutoVO getProdutovo() {
