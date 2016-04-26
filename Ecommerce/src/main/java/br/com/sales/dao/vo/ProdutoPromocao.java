@@ -2,6 +2,7 @@ package br.com.sales.dao.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class ProdutoPromocao implements Serializable {
     private double precoProdutoPromocao;
     private int descontoProduto;
     
-    
+   
 
     public Date getDataInicio() {
         return dataInicio;
